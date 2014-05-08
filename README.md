@@ -12,7 +12,8 @@ Verticon's Treatment Information Manager is a suite of tools for documenting, an
 
 Visit [Verticon,Inc](http://www.verticon.com) for more details.
 
-h2. Powered by Eclipse Technology
+Powered by Eclipse Technology
+------------
 
 Verticon's  Sobriety Documentation Editor offering is powered by Eclipse technology and includes Eclipse plug-ins that
 can be installed and used with other Eclipse-based offerings.
