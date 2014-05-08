@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>com.verticon.treatment.product.releng</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>tim.desktop</name>
+			<type>1</type>
+			<location>/home/jconlon/.local/share/applications/tim.desktop</location>
+		</link>
+	</linkedResources>
+</projectDescription>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension
+         id="treatmentManager"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="Treatement Information Manager">
+         <property
+               name="appName"
+               value="Treatement Information Manager">
+         </property>
+         
+         <property
+               name="startupForegroundColor"
+               value="00FF00">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="78,400,497,15">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="78,238,445,20">
+         </property>
+         
+        <property
+    		name="cssTheme"
+    		value="org.eclipse.e4.ui.css.theme.e4_default">
+		</property>
+		<property
+   			name="applicationCSSResources"
+    		value="platform:/plugin/org.eclipse.platform/images/">
+		</property>
+  		<property
+       		 name="preferenceCustomization"
+        	value="plugin_customization.ini">
+  		</property>
+    <property
+          name="aboutImage"
+          value="icons/treatment_248x164.gif">
+    </property>
+    <property
+          name="aboutText"
+          value="Treatment Manager&#x0A;Version: 1.0.0&#x0A;Build id: 201404291440&#x0A;&#x0A;(c) Copyright Verticon, Inc. 2014.  All rights reserved. &#x0A;&#x0A;Visit http://www.verticon.com&#x0A;&#x0A;Treatment Manager is powered by Eclipse technology and includes Eclipse plugins that can be installed and&#x0A;used with other Eclipse (4.3) based offerings.">
+    </property>
+    <property
+          name="windowImages"
+          value="icons/lamp_16.png,icons/lamp_32.png,icons/lamp_48.png">
+    </property>
+      </product>
+ </extension>
+</plugin>

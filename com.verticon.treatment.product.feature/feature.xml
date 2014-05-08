@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.verticon.treatment.product"
+      label="Treatement Product"
+      version="1.0.0.qualifier"
+      provider-name="Verticon, Inc."
+      plugin="com.verticon.treatment.product">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <url>
+      <update label="Verticon Project Updates" url="http://tracker.verticon.com/Tracker/updates/"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.equinox.app"/>
+      <import plugin="org.eclipse.equinox.ds"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.equinox.event"/>
+   </requires>
+
+   <plugin
+         id="com.verticon.treatment.product"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Treatment -->
+      <package
+            uri="com.verticon.treatment"
+            class="com.verticon.treatment.TreatmentPackage"
+            genModel="model/Treatment.xcore"/>
+   </extension>
+
+null
+</plugin>

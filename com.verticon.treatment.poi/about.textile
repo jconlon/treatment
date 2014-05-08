@@ -1,0 +1,86 @@
+h1=. Treatment Events Importer
+
+com.verticon.treatement.poi Version 1.0.0
+
+{toc:style=disc|minLevel=2|maxLevel=3}
+
+
+h2. Introduction
+
+Treatment Events Importer is a suite of utilities for importing Treatment and Test Events from Excel spreadsheets
+into Treatment documents.
+
+
+h2. Functionality
+
+When the Treatment document editor is active, popup menu items will be visible and enabled on Excel spreadsheets that contain Treatment and Test event logs. An operator can right click on one of these event logs and select the action for importing it.  
+
+h3. Required Excel File Formats
+
+These log files must be correctly formated with the proper column names and cell content data types.
+
+h4. Test LOG
+ 
+* Column names must also start in the first row of a spreadsheet and be in the following order:
+** Account, DateTime, Test, Result, Comments
+* Data types of the columns
+** Account
+*** Cell contents must be String 
+** DateTime
+*** Cell contents must be Date 
+** Test
+*** Cell contents must be a choice of 
+**** PBT
+**** UA
+** Description
+*** Cell contents are optional
+** Comments
+*** Cell contents are optional
+** Result
+*** Cell contents must be a decimal 
+
+h4. Treatment LOG
+
+* Column names must also start in the first row of a spreadsheet and be in the following order:
+** Account, DateTime, Event, Description, Comments
+* Data types of the columns
+** Account
+*** Cell contents must be String 
+** DateTime
+*** Cell contents must be Date 
+** Event
+*** Cell contents must be a choice of 
+**** INDIVIDUAL
+**** GROUP
+**** SELF HELP
+** Description
+*** Cell contents are optional
+** Comments
+*** Cell contents are optional 
+
+
+  
+
+
+
+h2. Powered by Eclipse Technology
+
+Verticon's  Sobriety Documentation Editor offering is powered by Eclipse technology and includes Eclipse plug-ins that
+can be installed and used with other Eclipse-based offerings.
+
+Visit "Verticon,Inc":http://verticon.com for more details.
+	
+h2. License
+
+Verticon, Inc. makes available all content in this plug-in (&quot;Content&quot;).  Unless otherwise 
+indicated below, the Content is provided to you under the terms and conditions of the
+Eclipse Public License version 1.0 (&quot;EPL 1&quot;).  A copy of the EPL 1 is available 
+at <a href="http://www.eclipse.org/legal/epl-v10.html">http://www.eclipse.org/legal/epl-v10.html</a>.
+For purposes of the EPL, &quot;Program&quot; will mean the Content.
+
+If you did not receive this Content directly from the Verticon,Inc., the Content is 
+being redistributed by another party (&quot;Redistributor&quot;) and different terms and conditions may
+apply to your use of any object code in the Content.  Check the Redistributor's license that was 
+provided with the Content.  If no such license exists, contact the Redistributor.  Unless otherwise
+indicated below, the terms and conditions of the EPL 1 still apply to any source code in the Content
+and such source code may be obtained at <a href="http://tracker.verticon.com/index.html">http://tracker.verticon.com/index.html</a>.</p>

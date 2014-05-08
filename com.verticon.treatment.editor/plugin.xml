@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright Verticon, Inc. 2014 All rights reserved.
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Treatment -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="com.verticon.treatment.presentation.TreatmentModelWizardID"
+            name="%_UI_TreatmentModelWizard_label"
+            class="com.verticon.treatment.presentation.TreatmentModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/TreatmentModelFile.gif">
+         <description>%_UI_TreatmentModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Treatment -->
+      <editor
+            id="com.verticon.treatment.presentation.TreatmentEditorID"
+            name="%_UI_TreatmentEditor_label"
+            icon="icons/full/obj16/TreatmentModelFile.gif"
+            extensions="treatment"
+            class="com.verticon.treatment.presentation.TreatmentEditor"
+            contributorClass="com.verticon.treatment.presentation.TreatmentActionBarContributor">
+      </editor>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            description="%_UI_commands_Treatment_category_description"
+            id="com.verticon.treatment.category"
+            name="%category.name.2">
+      </category>
+      
+      <!-- Place Holder in Popups Command -->
+      <command
+             id="com.verticon.treatment.editor.menus.popupany"
+             
+             categoryId="com.verticon.treatment.category"
+             description="Command place holder for popups"
+             name="Placeholder">
+      </command>
+      
+     </extension>
+     
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            
+         <menu
+               commandId="com.verticon.treatment.editor.menus.popupany"
+               label="%menu.label.0">
+         </menu>
+       
+      </menuContribution>  
+   </extension>
+
+    
+</plugin>
