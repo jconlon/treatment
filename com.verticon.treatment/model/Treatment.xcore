@@ -1,0 +1,380 @@
+@GenModel(copyrightFields="true", copyrightText="Copyright Verticon, Inc. 2014 All rights reserved.", editDirectory="/com.verticon.treatment.edit/src-gen", editorDirectory="/com.verticon.treatment.editor/src-gen", testsDirectory="/com.verticon.treatment.tests/src-gen", modelName="Treatment", prefix="Treatment", testSuiteClass="com.verticon.treatment.tests.TreatmentAllTests")
+package com.verticon.treatment
+
+import java.lang.RuntimeException
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.ArrayList
+import java.util.Collections
+import org.eclipse.emf.ecore.xml.^type.Decimal
+import org.joda.time.DateTime
+import org.joda.time.Days
+import org.joda.time.LocalDate
+
+
+class Program {
+	@GenModel(propertyCategory="Program", propertyDescription="Formal Name of the Program")
+	String name
+	
+	@GenModel(propertyCategory="Program", propertyDescription="Description of the Program")
+	String description
+	
+	@GenModel(propertyCategory="Program", propertyDescription="Name of the Organization Hosting the Program")
+	String organization
+	
+	@GenModel(propertyCategory="Program", propertyDescription="Website of the Organization Hosting the Program")
+	String website
+	
+	@GenModel(propertyCategory="Program", propertyDescription="Comments on the Program")
+	String comments
+	
+	@GenModel(propertyCategory="Administer", propertyDescription="Name of the Administer of the Program")
+	String administer
+	
+	@GenModel(propertyCategory="Administer", propertyDescription="EMail of the Administer of the Program")
+	String email
+	
+	@GenModel(propertyCategory="Administer", propertyDescription="Telephone Number of the Administer of the Program")
+	String phone
+	
+	
+	contains Person[] persons
+}
+
+class Person {
+	contains Event[] events opposite person
+	id String account
+	String comments
+	
+ @GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Program", propertyDescription="Date Person Started in the Program")
+	derived Date startDate get{
+		var Date _startDate = null
+		for (Event event:events){
+			if(event instanceof EnterPhase){
+				val EnterPhase _enterPhase = event 
+				if(_enterPhase.phase==Phase.FIRST){
+					if(_startDate == null || _startDate.after(event.date)){
+						_startDate = event.date
+					}
+				}
+			}
+		}
+		
+		return _startDate
+	}
+	
+	op EnterPhase getCurrentEnterPhase(){
+		var EnterPhase _enterPhase = null
+		for (Event event:events){
+			if(event instanceof EnterPhase){
+				if(_enterPhase == null || event.date.after(_enterPhase.date) ){
+					_enterPhase = event
+				}
+			}
+		}
+		return _enterPhase
+	}
+
+	
+	/*
+	 * 
+	 * Within the span of days find all the days that were spent in custody
+	 */
+	op int getDaysInCustody(Date start, Date stop) {
+		var int _daysInCustody = 0
+		var Date _enteredCustody
+
+		val _events = new ArrayList<Event>(events)
+		Collections.sort(_events)
+		for (Event event : events) {
+
+			if (event instanceof InCustody) {
+				if (_enteredCustody != null) {
+					throw new IllegalArgumentException("Can't go InCustody if never released.")
+				} else {
+					_enteredCustody = event.date
+				}
+
+			} else if (event instanceof Release) {
+				if (_enteredCustody != null) {
+
+					//Add to daysInCustody days between _enteredCustody and release.date
+					_daysInCustody = _daysInCustody + Days.daysBetween(LocalDate.fromDateFields(_enteredCustody),
+						LocalDate.fromDateFields(event.date)).getDays()
+				} else {
+
+					//Add to daysInCustody days between startDate and release.date
+					_daysInCustody = _daysInCustody + Days.daysBetween(LocalDate.fromDateFields(start),
+						LocalDate.fromDateFields(event.date)).getDays()
+				}
+				_enteredCustody = null
+			}
+		}
+		return _daysInCustody
+
+	}
+	@GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Phase", propertyDescription="Current Phase the Person is in.")
+	derived Phase currentPhase get{
+		val EnterPhase _enterPhase = getCurrentEnterPhase()
+		if(_enterPhase==null){
+			return Phase.ADMITTED
+		}else{
+			return _enterPhase.phase
+		}
+	}
+	@GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Phase", propertyDescription="Date the Person Entered the Current Phase.")
+	derived Date enteredPhase get{
+		val EnterPhase _enterPhase = getCurrentEnterPhase()
+		if(_enterPhase==null){
+			return null
+		}else{
+			return _enterPhase.date
+		}
+	}
+	@GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Phase", propertyDescription="Days the Person has been in the Current Phase.")
+	derived int daysInPhase get{
+		val Date _startDate = this.enteredPhase
+		if(_startDate==null){
+			return 0
+		}
+		
+		val int days = Days.daysBetween(LocalDate.fromDateFields(_startDate),
+            new LocalDate()).getDays()
+		return days
+	}
+	
+	@GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Sobriety", propertyDescription="Number of Days the Person has been Sober.")
+	derived int currentSoberDays get{
+		if(startDate==null){
+			return 0;
+		}
+		//Last sober date
+		var Date _lastSoberDate = startDate
+		for (Event event : events) {
+
+			if (event instanceof Relapse) {
+				_lastSoberDate=event.date
+			}
+		}
+		
+		val int days = Days.daysBetween(LocalDate.fromDateFields(_lastSoberDate),
+            new LocalDate()).getDays()
+            
+		return days - getDaysInCustody(_lastSoberDate, new Date() )
+	}
+	
+	/*
+	 * Total days from start of the program
+	 *  - days inCustody
+	 *  - relapses
+	 */
+	@GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Sobriety", propertyDescription="Total Number of Days the Person has been Sober while in the Program.")
+	derived int totalSoberDays get{
+		return daysInProgram - daysInCustody - relapses
+	}
+	
+	/*
+	 * Sort the events by date
+	 * Get the first InCustody Event
+	 * Find the next OutCustody Event or if it does not exist
+	 */
+	@GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Violations", propertyDescription="Total Number of Days the Person has been in Custody while in the Program.")
+	derived int daysInCustody get{
+		return getDaysInCustody(startDate, new Date() )
+	}
+	
+	@GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Violations", propertyDescription="Total Number of Relapses the Person has had while in the Program.")
+	derived int relapses get{
+		var int _relapses = 0
+		for (Event event:events){
+			if(event instanceof Relapse){
+				_relapses = _relapses+1
+			}
+		}
+		return _relapses
+	}
+	
+	@GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Violations", propertyDescription="The Date of the Person's Last Relapse.")
+	derived Date lastRelapse get{
+		var Relapse _lastRelapse = null
+		for (Event event:events){
+			if(event instanceof Relapse){
+				if(_lastRelapse == null || event.date.after(_lastRelapse.date) ){
+					_lastRelapse = event
+				}
+			}
+		}
+		return _lastRelapse?.date
+		
+	}
+	
+	@GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Violations", propertyDescription="Total Number of Other Violation the Person has had while in the Program..")
+	derived int otherViolations get{
+		var int _violations = 0
+		for (Event event:events){
+			if(event instanceof Violation && (!(event instanceof Relapse)) ){
+				_violations = _violations+1
+			}
+		}
+		return _violations
+	}
+	
+	@GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Violations", propertyDescription="The Date of the Person's Last Other Violation.")
+	derived Date lastViolation get{
+		var Event _lastViolation = null
+		for (Event event:events){
+			if(event instanceof Violation && (!(event instanceof Relapse))){
+				if(_lastViolation == null || event.date.after(_lastViolation.date) ){
+					_lastViolation = event
+				}
+			}
+		}
+		return _lastViolation?.date
+		
+	}
+	
+	
+	@GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Program", propertyDescription="Number of Days the Person has been in the Program")
+	derived int daysInProgram get{
+		val Date _startDate = startDate
+		if(_startDate==null){
+			return 0
+		}
+		val DateTime startDateTime = new DateTime(_startDate)
+		val DateTime now = new DateTime()
+		val int days = Days.daysBetween(new LocalDate(startDateTime),
+            new LocalDate(now)).getDays();
+		return days;
+	}
+		
+    @GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Incentives", propertyDescription="The Date of the Person's Last Incentive.")
+	derived Date lastIncentive get{
+		var Event _lastEvent = null
+		for (Event event:events){
+			if(event instanceof Incentive){
+				if(_lastEvent == null || event.date.after(_lastEvent.date) ){
+					_lastEvent = event
+				}
+			}
+		}
+		return _lastEvent?.date
+		
+	}
+	
+	@GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Incentives", propertyDescription="Total Number of Incentives the Person has had while in the Program.")
+	derived int incentives get{
+		var int _incentives = 0
+		for (Event event:events){
+			if(event instanceof Incentive){
+				_incentives = _incentives+1
+			}
+		}
+		return _incentives
+	}
+//			"Last Sanction",
+//			"Total Sanctions",// 8,9,10,11
+	 @GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Incentives", propertyDescription="The Date of the Person's Last Sanction.")
+	derived Date lastSanction get{
+		var Event _lastEvent = null
+		for (Event event:events){
+			if(event instanceof Sanction){
+				if(_lastEvent == null || event.date.after(_lastEvent.date) ){
+					_lastEvent = event
+				}
+			}
+		}
+		return _lastEvent?.date
+		
+	}
+	
+	@GenModel(propertyFilterFlags="org.eclipse.ui.views.properties.expert", propertyCategory="Incentives", propertyDescription="Total Number of Sanctions the Person has had while in the Program.")
+	derived int sanctions get{
+		var int _sanctions = 0
+		for (Event event:events){
+			if(event instanceof Sanction){
+				_sanctions = _sanctions+1
+			}
+		}
+		return _sanctions
+	}	
+	
+}
+
+abstract class Event extends Comparable{
+	container Person person opposite events
+	Date date 
+	String description
+	String comments
+ @GenModel(property="Readonly",propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	String enteredBy
+	
+   op int compareTo(Event event2)
+   {
+     return date.compareTo(event2.date);
+   } 
+}
+
+abstract class Test extends Event{
+	Decimal value
+}
+
+class EnterPhase extends Event{
+	Phase phase
+}
+
+class SelfHelp extends Treatment{}
+
+class Treatment extends Event{}
+
+class GroupTreatment extends Treatment{}
+
+class IndivdualTreatment extends Treatment{}
+
+class Incentive extends Event{}
+
+class Sanction extends Event{}
+
+class Status extends Event{}
+
+class Breathalyzer extends Test{}
+
+class Urinalysis extends Test{}
+
+class Offense extends Event{}
+
+class Violation extends Event{}
+
+class Relapse extends Violation{}
+
+class InCustody extends Event{}
+
+class Release extends Event{}
+
+
+type Date wraps Date 
+create {
+	try {
+		if (it != null) new SimpleDateFormat("MM-dd-yy HH:mm").parse(it);
+	} catch (ParseException parseException){
+		throw new RuntimeException(parseException)
+	}
+}
+convert {
+	if (it != null) new SimpleDateFormat("MM-dd-yy HH:mm").format(it);
+}
+
+enum Phase {
+	Admitted = 0
+	First = 1
+	Second = 2
+	Third = 3
+	Fourth = 4
+	Termination = 5
+	Graduation = 6
+	Ineligible = 7
+	Declined = 8
+}
+
+interface Comparable wraps Comparable<Event>{}
+	
