@@ -7,9 +7,9 @@ com.verticon.treatement.product Version 1.1.0
 
 h2. Introduction
 
-Verticon's Sobriety Documentation Editor is a suite of tools for documenting, analyzing, validating, and reporting on sobriety treatment programs, people in the program and their event histories.
+Verticon's Treatment Information Manager is a suite of tools for documenting, analyzing, validating, and reporting on health care treatment programs, people in the program and their event histories.
 
-Visit "Verticon,Inc":http://verticon.com for more details.
+Visit "Verticon,Inc":http://www.verticon.com for more details.
 
 
 h2. Powered by Eclipse Technology
