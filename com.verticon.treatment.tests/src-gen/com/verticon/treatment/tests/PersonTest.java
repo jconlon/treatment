@@ -39,6 +39,7 @@ import junit.textui.TestRunner;
  * The following operations are tested:
  * <ul>
  *   <li>{@link com.verticon.treatment.Person#getCurrentEnterPhase() <em>Get Current Enter Phase</em>}</li>
+ *   <li>{@link com.verticon.treatment.Person#getLastDayInProgram() <em>Get Last Day In Program</em>}</li>
  *   <li>{@link com.verticon.treatment.Person#getDaysInCustody(java.util.Date, java.util.Date) <em>Get Days In Custody</em>}</li>
  * </ul>
  * </p>
@@ -361,6 +362,20 @@ public class PersonTest extends TestCase
    * @generated
    */
   public void testGetCurrentEnterPhase()
+  {
+    // TODO: implement this operation test method
+    // Ensure that you remove @generated or mark it @generated NOT
+    fail();
+  }
+
+  /**
+   * Tests the '{@link com.verticon.treatment.Person#getLastDayInProgram() <em>Get Last Day In Program</em>}' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.verticon.treatment.Person#getLastDayInProgram()
+   * @generated
+   */
+  public void testGetLastDayInProgram()
   {
     // TODO: implement this operation test method
     // Ensure that you remove @generated or mark it @generated NOT

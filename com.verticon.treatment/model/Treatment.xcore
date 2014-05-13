@@ -75,6 +75,22 @@ class Person {
 		}
 		return _enterPhase
 	}
+	
+	op Date getLastDayInProgram(){
+		val EnterPhase _enterPhase = getCurrentEnterPhase()
+		if(_enterPhase==null){
+			return new Date()
+		}
+
+		else{
+			if(_enterPhase.phase==Phase.TERMINATION){
+					return _enterPhase.date	
+			}else if(_enterPhase.phase==Phase.GRADUATION){
+					return _enterPhase.date	}
+			
+		}
+		return new Date()
+	}
 
 	
 	/*
@@ -242,9 +258,9 @@ class Person {
 			return 0
 		}
 		val DateTime startDateTime = new DateTime(_startDate)
-		val DateTime now = new DateTime()
+		val DateTime lastDateTime = new DateTime(getLastDayInProgram())
 		val int days = Days.daysBetween(new LocalDate(startDateTime),
-            new LocalDate(now)).getDays();
+            new LocalDate(lastDateTime)).getDays();
 		return days;
 	}
 		
