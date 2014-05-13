@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Naming
+Bundle-SymbolicName: com.verticon.naming
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Verticon,Inc.
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.osgi.framework;version="1.3.0",
+ org.osgi.util.tracker;version="1.3.1"
+Service-Component: OSGI-INF/*.xml
+Export-Package: com.verticon.naming
+Bundle-ActivationPolicy: lazy

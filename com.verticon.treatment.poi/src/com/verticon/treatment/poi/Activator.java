@@ -10,9 +10,14 @@
  *******************************************************************************/
 package com.verticon.treatment.poi;
 
+import java.util.Map;
+
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.util.tracker.ServiceTracker;
+
+import com.verticon.naming.INameService;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -24,7 +29,7 @@ public class Activator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
-	
+	private static ServiceTracker<INameService, INameService> nameServiceTracker;
 	/**
 	 * The constructor
 	 */
@@ -38,6 +43,10 @@ public class Activator extends AbstractUIPlugin {
 	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
+		// create a tracker and track the service
+		nameServiceTracker = new ServiceTracker<INameService, INameService>(
+				context, INameService.class, null);
+		nameServiceTracker.open();
 		plugin = this;
 	}
 
@@ -47,9 +56,11 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	@Override
 	public void stop(BundleContext context) throws Exception {
+		nameServiceTracker.close();
 		plugin = null;
 		super.stop(context);
 	}
+
 
 	/**
 	 * Returns the shared instance
@@ -69,5 +80,14 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+	}
+
+	public void loadNames(Map<String, String> accountNames) {
+		if (nameServiceTracker != null
+				&& nameServiceTracker.getService() != null) {
+			INameService ns = nameServiceTracker.getService();
+			ns.load(accountNames);
+		}
+
 	}
 }

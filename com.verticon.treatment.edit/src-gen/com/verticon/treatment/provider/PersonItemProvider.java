@@ -591,19 +591,24 @@ public class PersonItemProvider
     return overlayImage(object, getResourceLocator().getImage("full/obj16/Person"));
   }
 
-  /**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
+  	/**
+	 * This returns the label text for the adapted class. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
   @Override
   public String getText(Object object)
   {
-    String label = ((Person)object).getAccount();
-    return label == null || label.length() == 0 ?
-      getString("_UI_Person_type") :
-      getString("_UI_Person_type") + " " + label;
+		String account = ((Person) object).getAccount();
+		if (account == null || account.length() == 0) {
+			return "Account: ?";
+		}
+
+		String name = TreatmentEditPlugin.INSTANCE.getName(account);
+
+		return name == null || name.length() == 0 ? account : name + " ("
+				+ account + ')';
   }
 
   /**
@@ -795,7 +800,7 @@ public class PersonItemProvider
 		Person person = (Person) object;
 		switch (columnIndex) {
 		case 0: // Account
-			return person.getAccount() != null ? person.getAccount() : "";
+			return getText(object);
 		case 1: // Start Date
 			return person.getStartDate() != null ? df.format(person
 					.getStartDate())

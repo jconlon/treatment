@@ -22,6 +22,13 @@
              description="Import Treatment Event Data from an Excel spreadsheet"
              name="Import Treatment Event Data">
       </command>
+      
+       <command
+             id="com.verticon.treatment.poi.commands.event.import.names"
+             categoryId="com.verticon.treatment.poi.category"
+             description="Import Naming Data from an Excel spreadsheet"
+             name="Load Naming Data">
+      </command>
    </extension>
    
    <extension
@@ -30,7 +37,7 @@
             class="com.verticon.treatment.poi.handlers.XlsEventTypeTester"
             id="com.verticon.treatment.propertyTester.XlsEventTypeTester"
             namespace="com.verticon.treatment"
-            properties="isTestLog, isOtherLog"
+            properties="isTestLog, isOtherLog, isNaming"
             type="java.lang.Object">
       </propertyTester>
       
@@ -96,6 +103,36 @@
 	            </visibleWhen>
                </command>
       </menuContribution>
+      
+       <menuContribution
+            locationURI="popup:com.verticon.treatment.editor.menus.popupany">
+               <command
+                     commandId="com.verticon.treatment.poi.commands.event.import.names"
+                     icon="icons/etool16/import_wiz.gif"
+                     style="push">
+               <visibleWhen>
+                      <and> 
+		               <with variable="selection">
+		                  <iterate
+                          ifEmpty="false"
+                          operator="or">
+		                      <adapt type="org.eclipse.core.resources.IResource">
+		          					<test property="org.eclipse.core.resources.name" 
+		               				 value="*.xls"/>
+		      				 </adapt>
+		      				 
+		                  </iterate>
+		               </with>
+    					 <!-- Show only if the spreadsheet is a naming-->
+    					 <test
+    					     forcePluginActivation="true"
+                   			 property="com.verticon.treatment.isNaming">
+              			</test>
+              			
+		               </and>
+	            </visibleWhen>
+               </command>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -114,6 +151,18 @@
       <handler
             class="com.verticon.treatment.poi.handlers.EventImportHandler"
             commandId="com.verticon.treatment.poi.commands.event.import.other">
+         <activeWhen>
+            <with
+                  variable="activeEditor">
+               <instanceof
+                     value="com.verticon.treatment.presentation.TreatmentEditor">
+               </instanceof>
+            </with>
+         </activeWhen>
+      </handler>
+      <handler
+            class="com.verticon.treatment.poi.handlers.NamingImportHandler"
+            commandId="com.verticon.treatment.poi.commands.event.import.names">
          <activeWhen>
             <with
                   variable="activeEditor">

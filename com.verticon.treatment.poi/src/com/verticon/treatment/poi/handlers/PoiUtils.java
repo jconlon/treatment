@@ -41,6 +41,9 @@ public class PoiUtils {
 	public static final String[] TREATMENTLOG_HEADER = { "Account", "DateTime",
 			"Treatment", "Description", "Comments" };
 
+	public static final String[] NAMING_HEADER = { "Account", "First Name",
+			"Last Name" };
+
 	public static final int ACCOUNT_COL = 0;
 	public static final int DATETIME_COL = 1;
 	public static final int TEST_COL = 2;
@@ -49,6 +52,9 @@ public class PoiUtils {
 	public static final int RESULT_COL = 5;
 
 	public static final int TREATMENT_COL = 2;
+	public static final int FNAME_COL = 1;
+	public static final int LNAME_COL = 2;
+
 
 	public static final String TEST_PBT = "PBT";
 	public static final String TEST_UA = "UA";
@@ -73,18 +79,6 @@ public class PoiUtils {
 			s = w.getSheetAt(0);
 		} catch (Exception e) {
 			e.printStackTrace();
-			// logger.error(bundleMarker,"Failed to process the spreadsheet",e);
-			// Create the required Status object
-			// Status status = new Status(IStatus.ERROR,
-			// "com.verticon.tracker.fair.editor", 0,
-			// "Failed to open the Fair Editor", e);
-			// // Display the dialog
-			// ErrorDialog
-			// .openError(
-			// workbench.getShell(),
-			// "Fair Data Import Error",
-			// "Please insure the data file contains valid column names and row values.",
-			// status);
 	
 		} finally {
 			// once all the events are processed close our file input stream

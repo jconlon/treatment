@@ -4,8 +4,11 @@
 package com.verticon.treatment.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.osgi.framework.BundleContext;
+import org.osgi.util.tracker.ServiceTracker;
+
+import com.verticon.naming.INameService;
 
 /**
  * This is the central singleton for the Treatment edit plugin.
@@ -38,6 +41,9 @@ public final class TreatmentEditPlugin extends EMFPlugin
    */
   private static Implementation plugin;
 
+	private static ServiceTracker<INameService, INameService> nameServiceTracker;
+
+
   /**
    * Create the instance.
    * <!-- begin-user-doc -->
@@ -51,6 +57,15 @@ public final class TreatmentEditPlugin extends EMFPlugin
        {
        });
   }
+
+	String getName(String account) {
+		if (nameServiceTracker != null
+				&& nameServiceTracker.getService() != null) {
+			INameService ns = nameServiceTracker.getService();
+			return ns.getName(account);
+		}
+		return null;
+	}
 
   /**
    * Returns the singleton instance of the Eclipse plugin.
@@ -99,6 +114,37 @@ public final class TreatmentEditPlugin extends EMFPlugin
       //
       plugin = this;
     }
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext
+		 * )
+		 */
+		@Override
+		public void start(BundleContext context) throws Exception {
+			super.start(context);
+			// create a tracker and track the service
+			nameServiceTracker = new ServiceTracker<INameService, INameService>(
+					context, INameService.class, null);
+			nameServiceTracker.open();
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext
+		 * )
+		 */
+		@Override
+		public void stop(BundleContext context) throws Exception {
+			nameServiceTracker.close();
+
+			super.stop(context);
+		}
+
   }
 
 }

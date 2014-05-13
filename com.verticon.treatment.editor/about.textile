@@ -1,6 +1,6 @@
 h1=. Treatment Information Manager
 
-com.verticon.treatement.product Version 1.1.0
+com.verticon.treatement.product Version 1.2.0
 
 {toc:style=disc|minLevel=2|maxLevel=3}
 

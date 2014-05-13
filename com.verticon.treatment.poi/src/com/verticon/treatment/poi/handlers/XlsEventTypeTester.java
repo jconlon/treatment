@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.verticon.treatment.poi.handlers;
 
+import static com.verticon.treatment.poi.handlers.PoiUtils.NAMING_HEADER;
 import static com.verticon.treatment.poi.handlers.PoiUtils.TESTLOG_HEADER;
 import static com.verticon.treatment.poi.handlers.PoiUtils.TREATMENTLOG_HEADER;
 import static com.verticon.treatment.poi.handlers.PoiUtils.convert;
@@ -26,7 +27,7 @@ import org.eclipse.core.runtime.CoreException;
 public class XlsEventTypeTester extends PropertyTester {
 
 	enum Tests {
-		isTestLog, isOtherLog
+		isTestLog, isOtherLog, isNaming
 	};
 
 	@Override
@@ -39,6 +40,8 @@ public class XlsEventTypeTester extends PropertyTester {
 			return isMatch(TESTLOG_HEADER, selection);
 		case isOtherLog:
 			return isMatch(TREATMENTLOG_HEADER, selection);
+		case isNaming:
+			return isMatch(NAMING_HEADER, selection);
 		default:
 			return false;
 		}
@@ -79,7 +82,6 @@ public class XlsEventTypeTester extends PropertyTester {
 			return false;
 		}
 		if (!f.toString().endsWith(".xls")) {
-			// System.out.println("Not an xls file: " + f.toString());
 			return false;
 		}
 		HSSFSheet workSheet = getWorkSheet(f);
@@ -89,39 +91,6 @@ public class XlsEventTypeTester extends PropertyTester {
 		}
 
 		return isWorkSheetMatch(header, workSheet);
-
-		//
-		// System.out.println("Row number: " + rowNum);
-		// // for (Row row : workSheet) {
-		// for (Cell cell : row) {
-		// CellReference cellRef = new CellReference(row.getRowNum(),
-		// cell.getColumnIndex());
-		// System.out.print(cellRef.formatAsString());
-		// System.out.print(" - ");
-		//
-		// switch (cell.getCellType()) {
-		// case Cell.CELL_TYPE_STRING:
-		// System.out.println(cell.getRichStringCellValue()
-		// .getString());
-		// break;
-		// case Cell.CELL_TYPE_NUMERIC:
-		// if (DateUtil.isCellDateFormatted(cell)) {
-		// System.out.println(cell.getDateCellValue());
-		// } else {
-		// System.out.println(cell.getNumericCellValue());
-		// }
-		// break;
-		// case Cell.CELL_TYPE_BOOLEAN:
-		// System.out.println(cell.getBooleanCellValue());
-		// break;
-		// case Cell.CELL_TYPE_FORMULA:
-		// System.out.println(cell.getCellFormula());
-		// break;
-		// default:
-		// System.out.println();
-		// }
-		// }
-		// // }
 
 	}
 
