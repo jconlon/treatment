@@ -40,6 +40,7 @@
       <import plugin="org.eclipse.swt"/>
       <import plugin="org.eclipse.core.commands"/>
       <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.osgi"/>
    </requires>
 
    <plugin

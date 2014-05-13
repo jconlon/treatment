@@ -146,18 +146,28 @@ public class NamingImportHandler extends AbstractHandler {
 
 				String account = getStringValue(ws.getRow(i),
 						PoiUtils.ACCOUNT_COL);
-				StringBuilder builder = new StringBuilder(getStringValue(
-						ws.getRow(i), PoiUtils.FNAME_COL)).append(' ');
-
-				builder.append(getStringValue(ws.getRow(i), PoiUtils.LNAME_COL));
+				
 				if (account == null || account.length() == 0) {
 					break;
 				} else {
+					String fName = getStringValue(
+							ws.getRow(i), PoiUtils.FNAME_COL);
+					if(fName == null || fName.length() == 0) {
+						throw new Exception("Failed to find first Name in Row "+i);
+					}
+					String lName = getStringValue(
+							ws.getRow(i), PoiUtils.LNAME_COL);
+					if(lName == null || lName.length() == 0) {
+						throw new Exception("Failed to find last Name in Row "+i);
+					}
+					StringBuilder builder = new StringBuilder(fName)
+							.append(' ').append(lName);
 					System.out.printf("Adding row %s account=%s name=%s %n", i,
 							account,
 							builder.toString());
+					nameMap.put(account, builder.toString());
 				}
-				nameMap.put(account, builder.toString());
+				
 
 				count++;
 			}
