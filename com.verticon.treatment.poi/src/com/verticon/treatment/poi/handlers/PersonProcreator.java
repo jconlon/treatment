@@ -109,7 +109,7 @@ class PersonProcreator implements ExecutableProcreator {
 	@Override
 	public String getStatus() {
 		StringBuilder sbuilderBuilder = new StringBuilder();
-		sbuilderBuilder.append(totalChildrenAdded).append(" people, ")
+		sbuilderBuilder.append(totalChildrenAdded).append(" person(s), ")
 				.append(child == null ? "" : child.getStatus());
 		return sbuilderBuilder.toString();
 	}

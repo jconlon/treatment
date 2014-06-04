@@ -151,7 +151,10 @@ public class EventImportHandler extends AbstractHandler {
 		try {
 			int rowsInSheet = ws.getPhysicalNumberOfRows();
 			for (int i = 1; i < rowsInSheet; i++) {
-				System.out.printf("Processing row %s%n", i);
+				System.out.printf(
+					"Processing row %s in spreadsheet with %s rows.%n",
+					 i + 1,
+					rowsInSheet);
 
 				monitor.worked(1);
 				procreator.prepare(program, ws.getRow(i), ed);
