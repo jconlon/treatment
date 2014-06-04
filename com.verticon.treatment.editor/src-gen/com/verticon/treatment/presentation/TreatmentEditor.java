@@ -15,59 +15,9 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.jface.action.IMenuListener;
-import org.eclipse.jface.action.IMenuManager;
-import org.eclipse.jface.action.IStatusLineManager;
-import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.action.Separator;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.util.LocalSelectionTransfer;
-import org.eclipse.jface.viewers.ColumnWeightData;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.ISelectionProvider;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.ListViewer;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.StructuredViewer;
-import org.eclipse.jface.viewers.TableLayout;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.CTabFolder;
-import org.eclipse.swt.dnd.DND;
-import org.eclipse.swt.dnd.FileTransfer;
-import org.eclipse.swt.dnd.Transfer;
-import org.eclipse.swt.events.ControlAdapter;
-import org.eclipse.swt.events.ControlEvent;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.TreeColumn;
-import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IEditorSite;
-import org.eclipse.ui.IPartListener;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.part.MultiPageEditorPart;
-import org.eclipse.ui.views.contentoutline.ContentOutline;
-import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
-import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
-import org.eclipse.ui.views.properties.IPropertySheetPage;
-import org.eclipse.ui.views.properties.PropertySheet;
-import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -99,9 +49,55 @@ import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IStatusLineManager;
+import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.util.LocalSelectionTransfer;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ListViewer;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.StructuredViewer;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CTabFolder;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.FileTransfer;
+import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.events.ControlAdapter;
+import org.eclipse.swt.events.ControlEvent;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorSite;
+import org.eclipse.ui.IPartListener;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.part.MultiPageEditorPart;
+import org.eclipse.ui.views.contentoutline.ContentOutline;
+import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
+import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
+import org.eclipse.ui.views.properties.IPropertySheetPage;
+import org.eclipse.ui.views.properties.PropertySheet;
+import org.eclipse.ui.views.properties.PropertySheetPage;
+
 import com.verticon.treatment.provider.TreatmentItemProviderAdapterFactory;
 
 
@@ -294,7 +290,8 @@ public class TreatmentEditor
   protected IPartListener partListener =
     new IPartListener()
     {
-      public void partActivated(IWorkbenchPart p)
+      @Override
+	public void partActivated(IWorkbenchPart p)
       {
         if (p instanceof ContentOutline)
         {
@@ -318,19 +315,23 @@ public class TreatmentEditor
           handleActivate();
         }
       }
-      public void partBroughtToTop(IWorkbenchPart p)
+      @Override
+	public void partBroughtToTop(IWorkbenchPart p)
       {
         // Ignore.
       }
-      public void partClosed(IWorkbenchPart p)
+      @Override
+	public void partClosed(IWorkbenchPart p)
       {
         // Ignore.
       }
-      public void partDeactivated(IWorkbenchPart p)
+      @Override
+	public void partDeactivated(IWorkbenchPart p)
       {
         // Ignore.
       }
-      public void partOpened(IWorkbenchPart p)
+      @Override
+	public void partOpened(IWorkbenchPart p)
       {
         // Ignore.
       }
@@ -412,7 +413,8 @@ public class TreatmentEditor
                 getSite().getShell().getDisplay().asyncExec
                   (new Runnable()
                    {
-                     public void run()
+                     @Override
+					public void run()
                      {
                        updateProblemIndication();
                      }
@@ -444,7 +446,8 @@ public class TreatmentEditor
           getSite().getShell().getDisplay().asyncExec
             (new Runnable()
              {
-               public void run()
+               @Override
+			public void run()
                {
                  updateProblemIndication();
                }
@@ -645,12 +648,14 @@ public class TreatmentEditor
     commandStack.addCommandStackListener
       (new CommandStackListener()
        {
-         public void commandStackChanged(final EventObject event)
+         @Override
+		public void commandStackChanged(final EventObject event)
          {
            getContainer().getDisplay().asyncExec
              (new Runnable()
               {
-                public void run()
+                @Override
+				public void run()
                 {
                   firePropertyChange(IEditorPart.PROP_DIRTY);
 
@@ -711,7 +716,8 @@ public class TreatmentEditor
       Runnable runnable =
         new Runnable()
         {
-          public void run()
+          @Override
+		public void run()
           {
             // Try to select the items in the current content viewer of the editor.
             //
@@ -733,7 +739,8 @@ public class TreatmentEditor
    * <!-- end-user-doc -->
    * @generated
    */
-  public EditingDomain getEditingDomain()
+  @Override
+public EditingDomain getEditingDomain()
   {
     return editingDomain;
   }
@@ -843,7 +850,8 @@ public class TreatmentEditor
           {
             // This just notifies those things that are affected by the section.
             //
-            public void selectionChanged(SelectionChangedEvent selectionChangedEvent)
+            @Override
+			public void selectionChanged(SelectionChangedEvent selectionChangedEvent)
             {
               setSelection(selectionChangedEvent.getSelection());
             }
@@ -880,7 +888,8 @@ public class TreatmentEditor
    * <!-- end-user-doc -->
    * @generated
    */
-  public Viewer getViewer()
+  @Override
+public Viewer getViewer()
   {
     return currentViewer;
   }
@@ -979,7 +988,7 @@ public class TreatmentEditor
    * This is the method used by the framework to install your own controls.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
+   * @generated NOT
    */
   @Override
   public void createPages()
@@ -1029,192 +1038,202 @@ public class TreatmentEditor
         setPageText(pageIndex, getString("_UI_SelectionPage_label"));
       }
 
-      // Create a page for the parent tree view.
-      //
-      {
-        ViewerPane viewerPane =
-          new ViewerPane(getSite().getPage(), TreatmentEditor.this)
-          {
-            @Override
-            public Viewer createViewer(Composite composite)
-            {
-              Tree tree = new Tree(composite, SWT.MULTI);
-              TreeViewer newTreeViewer = new TreeViewer(tree);
-              return newTreeViewer;
-            }
-            @Override
-            public void requestActivation()
-            {
-              super.requestActivation();
-              setCurrentViewerPane(this);
-            }
-          };
-        viewerPane.createControl(getContainer());
-
-        parentViewer = (TreeViewer)viewerPane.getViewer();
-        parentViewer.setAutoExpandLevel(30);
-        parentViewer.setContentProvider(new ReverseAdapterFactoryContentProvider(adapterFactory));
-        parentViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-        createContextMenuFor(parentViewer);
-        int pageIndex = addPage(viewerPane.getControl());
-        setPageText(pageIndex, getString("_UI_ParentPage_label"));
-      }
-
-      // This is the page for the list viewer
-      //
-      {
-        ViewerPane viewerPane =
-          new ViewerPane(getSite().getPage(), TreatmentEditor.this)
-          {
-            @Override
-            public Viewer createViewer(Composite composite)
-            {
-              return new ListViewer(composite);
-            }
-            @Override
-            public void requestActivation()
-            {
-              super.requestActivation();
-              setCurrentViewerPane(this);
-            }
-          };
-        viewerPane.createControl(getContainer());
-        listViewer = (ListViewer)viewerPane.getViewer();
-        listViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-        listViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-        createContextMenuFor(listViewer);
-        int pageIndex = addPage(viewerPane.getControl());
-        setPageText(pageIndex, getString("_UI_ListPage_label"));
-      }
-
-      // This is the page for the tree viewer
-      //
-      {
-        ViewerPane viewerPane =
-          new ViewerPane(getSite().getPage(), TreatmentEditor.this)
-          {
-            @Override
-            public Viewer createViewer(Composite composite)
-            {
-              return new TreeViewer(composite);
-            }
-            @Override
-            public void requestActivation()
-            {
-              super.requestActivation();
-              setCurrentViewerPane(this);
-            }
-          };
-        viewerPane.createControl(getContainer());
-        treeViewer = (TreeViewer)viewerPane.getViewer();
-        treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-        treeViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-        new AdapterFactoryTreeEditor(treeViewer.getTree(), adapterFactory);
-
-        createContextMenuFor(treeViewer);
-        int pageIndex = addPage(viewerPane.getControl());
-        setPageText(pageIndex, getString("_UI_TreePage_label"));
-      }
-
-      // This is the page for the table viewer.
-      //
-      {
-        ViewerPane viewerPane =
-          new ViewerPane(getSite().getPage(), TreatmentEditor.this)
-          {
-            @Override
-            public Viewer createViewer(Composite composite)
-            {
-              return new TableViewer(composite);
-            }
-            @Override
-            public void requestActivation()
-            {
-              super.requestActivation();
-              setCurrentViewerPane(this);
-            }
-          };
-        viewerPane.createControl(getContainer());
-        tableViewer = (TableViewer)viewerPane.getViewer();
-
-        Table table = tableViewer.getTable();
-        TableLayout layout = new TableLayout();
-        table.setLayout(layout);
-        table.setHeaderVisible(true);
-        table.setLinesVisible(true);
-
-        TableColumn objectColumn = new TableColumn(table, SWT.NONE);
-        layout.addColumnData(new ColumnWeightData(3, 100, true));
-        objectColumn.setText(getString("_UI_ObjectColumn_label"));
-        objectColumn.setResizable(true);
-
-        TableColumn selfColumn = new TableColumn(table, SWT.NONE);
-        layout.addColumnData(new ColumnWeightData(2, 100, true));
-        selfColumn.setText(getString("_UI_SelfColumn_label"));
-        selfColumn.setResizable(true);
-
-        tableViewer.setColumnProperties(new String [] {"a", "b"});
-        tableViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-        tableViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-        createContextMenuFor(tableViewer);
-        int pageIndex = addPage(viewerPane.getControl());
-        setPageText(pageIndex, getString("_UI_TablePage_label"));
-      }
-
-      // This is the page for the table tree viewer.
-      //
-      {
-        ViewerPane viewerPane =
-          new ViewerPane(getSite().getPage(), TreatmentEditor.this)
-          {
-            @Override
-            public Viewer createViewer(Composite composite)
-            {
-              return new TreeViewer(composite);
-            }
-            @Override
-            public void requestActivation()
-            {
-              super.requestActivation();
-              setCurrentViewerPane(this);
-            }
-          };
-        viewerPane.createControl(getContainer());
-
-        treeViewerWithColumns = (TreeViewer)viewerPane.getViewer();
-
-        Tree tree = treeViewerWithColumns.getTree();
-        tree.setLayoutData(new FillLayout());
-        tree.setHeaderVisible(true);
-        tree.setLinesVisible(true);
-
-        TreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);
-        objectColumn.setText(getString("_UI_ObjectColumn_label"));
-        objectColumn.setResizable(true);
-        objectColumn.setWidth(250);
-
-        TreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);
-        selfColumn.setText(getString("_UI_SelfColumn_label"));
-        selfColumn.setResizable(true);
-        selfColumn.setWidth(200);
-
-        treeViewerWithColumns.setColumnProperties(new String [] {"a", "b"});
-        treeViewerWithColumns.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-        treeViewerWithColumns.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-        createContextMenuFor(treeViewerWithColumns);
-        int pageIndex = addPage(viewerPane.getControl());
-        setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label"));
-      }
+			// // Create a page for the parent tree view.
+			// //
+			// {
+			// ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
+			// TreatmentEditor.this) {
+			// @Override
+			// public Viewer createViewer(Composite composite) {
+			// Tree tree = new Tree(composite, SWT.MULTI);
+			// TreeViewer newTreeViewer = new TreeViewer(tree);
+			// return newTreeViewer;
+			// }
+			//
+			// @Override
+			// public void requestActivation() {
+			// super.requestActivation();
+			// setCurrentViewerPane(this);
+			// }
+			// };
+			// viewerPane.createControl(getContainer());
+			//
+			// parentViewer = (TreeViewer) viewerPane.getViewer();
+			// parentViewer.setAutoExpandLevel(30);
+			// parentViewer
+			// .setContentProvider(new ReverseAdapterFactoryContentProvider(
+			// adapterFactory));
+			// parentViewer.setLabelProvider(new AdapterFactoryLabelProvider(
+			// adapterFactory));
+			//
+			// createContextMenuFor(parentViewer);
+			// int pageIndex = addPage(viewerPane.getControl());
+			// setPageText(pageIndex, getString("_UI_ParentPage_label"));
+			// }
+			//
+			// // This is the page for the list viewer
+			// //
+			// {
+			// ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
+			// TreatmentEditor.this) {
+			// @Override
+			// public Viewer createViewer(Composite composite) {
+			// return new ListViewer(composite);
+			// }
+			//
+			// @Override
+			// public void requestActivation() {
+			// super.requestActivation();
+			// setCurrentViewerPane(this);
+			// }
+			// };
+			// viewerPane.createControl(getContainer());
+			// listViewer = (ListViewer) viewerPane.getViewer();
+			// listViewer
+			// .setContentProvider(new AdapterFactoryContentProvider(
+			// adapterFactory));
+			// listViewer.setLabelProvider(new AdapterFactoryLabelProvider(
+			// adapterFactory));
+			//
+			// createContextMenuFor(listViewer);
+			// int pageIndex = addPage(viewerPane.getControl());
+			// setPageText(pageIndex, getString("_UI_ListPage_label"));
+			// }
+			//
+			// // This is the page for the tree viewer
+			// //
+			// {
+			// ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
+			// TreatmentEditor.this) {
+			// @Override
+			// public Viewer createViewer(Composite composite) {
+			// return new TreeViewer(composite);
+			// }
+			//
+			// @Override
+			// public void requestActivation() {
+			// super.requestActivation();
+			// setCurrentViewerPane(this);
+			// }
+			// };
+			// viewerPane.createControl(getContainer());
+			// treeViewer = (TreeViewer) viewerPane.getViewer();
+			// treeViewer
+			// .setContentProvider(new AdapterFactoryContentProvider(
+			// adapterFactory));
+			// treeViewer.setLabelProvider(new AdapterFactoryLabelProvider(
+			// adapterFactory));
+			//
+			// new AdapterFactoryTreeEditor(treeViewer.getTree(),
+			// adapterFactory);
+			//
+			// createContextMenuFor(treeViewer);
+			// int pageIndex = addPage(viewerPane.getControl());
+			// setPageText(pageIndex, getString("_UI_TreePage_label"));
+			// }
+			//
+			// // This is the page for the table viewer.
+			// //
+			// {
+			// ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
+			// TreatmentEditor.this) {
+			// @Override
+			// public Viewer createViewer(Composite composite) {
+			// return new TableViewer(composite);
+			// }
+			//
+			// @Override
+			// public void requestActivation() {
+			// super.requestActivation();
+			// setCurrentViewerPane(this);
+			// }
+			// };
+			// viewerPane.createControl(getContainer());
+			// tableViewer = (TableViewer) viewerPane.getViewer();
+			//
+			// Table table = tableViewer.getTable();
+			// TableLayout layout = new TableLayout();
+			// table.setLayout(layout);
+			// table.setHeaderVisible(true);
+			// table.setLinesVisible(true);
+			//
+			// TableColumn objectColumn = new TableColumn(table, SWT.NONE);
+			// layout.addColumnData(new ColumnWeightData(3, 100, true));
+			// objectColumn.setText(getString("_UI_ObjectColumn_label"));
+			// objectColumn.setResizable(true);
+			//
+			// TableColumn selfColumn = new TableColumn(table, SWT.NONE);
+			// layout.addColumnData(new ColumnWeightData(2, 100, true));
+			// selfColumn.setText(getString("_UI_SelfColumn_label"));
+			// selfColumn.setResizable(true);
+			//
+			// tableViewer.setColumnProperties(new String[] { "a", "b" });
+			// tableViewer
+			// .setContentProvider(new AdapterFactoryContentProvider(
+			// adapterFactory));
+			// tableViewer.setLabelProvider(new AdapterFactoryLabelProvider(
+			// adapterFactory));
+			//
+			// createContextMenuFor(tableViewer);
+			// int pageIndex = addPage(viewerPane.getControl());
+			// setPageText(pageIndex, getString("_UI_TablePage_label"));
+			// }
+			//
+			// // This is the page for the table tree viewer.
+			// //
+			// {
+			// ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
+			// TreatmentEditor.this) {
+			// @Override
+			// public Viewer createViewer(Composite composite) {
+			// return new TreeViewer(composite);
+			// }
+			//
+			// @Override
+			// public void requestActivation() {
+			// super.requestActivation();
+			// setCurrentViewerPane(this);
+			// }
+			// };
+			// viewerPane.createControl(getContainer());
+			//
+			// treeViewerWithColumns = (TreeViewer) viewerPane.getViewer();
+			//
+			// Tree tree = treeViewerWithColumns.getTree();
+			// tree.setLayoutData(new FillLayout());
+			// tree.setHeaderVisible(true);
+			// tree.setLinesVisible(true);
+			//
+			// TreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);
+			// objectColumn.setText(getString("_UI_ObjectColumn_label"));
+			// objectColumn.setResizable(true);
+			// objectColumn.setWidth(250);
+			//
+			// TreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);
+			// selfColumn.setText(getString("_UI_SelfColumn_label"));
+			// selfColumn.setResizable(true);
+			// selfColumn.setWidth(200);
+			//
+			// treeViewerWithColumns.setColumnProperties(new String[] { "a",
+			// "b" });
+			// treeViewerWithColumns
+			// .setContentProvider(new AdapterFactoryContentProvider(
+			// adapterFactory));
+			// treeViewerWithColumns
+			// .setLabelProvider(new AdapterFactoryLabelProvider(
+			// adapterFactory));
+			//
+			// createContextMenuFor(treeViewerWithColumns);
+			// int pageIndex = addPage(viewerPane.getControl());
+			// setPageText(pageIndex,
+			// getString("_UI_TreeWithColumnsPage_label"));
+			// }
 
       getSite().getShell().getDisplay().asyncExec
         (new Runnable()
          {
-           public void run()
+           @Override
+		public void run()
            {
              setActivePage(0);
            }
@@ -1243,7 +1262,8 @@ public class TreatmentEditor
     getSite().getShell().getDisplay().asyncExec
       (new Runnable()
        {
-         public void run()
+         @Override
+		public void run()
          {
            updateProblemIndication();
          }
@@ -1396,7 +1416,8 @@ public class TreatmentEditor
          {
            // This ensures that we handle selections correctly.
            //
-           public void selectionChanged(SelectionChangedEvent event)
+           @Override
+		public void selectionChanged(SelectionChangedEvent event)
            {
              handleContentOutlineSelection(event.getSelection());
            }
@@ -1517,7 +1538,8 @@ public class TreatmentEditor
       {
         // This is the method that gets invoked when the operation runs.
         //
-        public void run(IProgressMonitor monitor)
+        @Override
+		public void run(IProgressMonitor monitor)
         {
           // Save the resources to the file system.
           //
@@ -1680,7 +1702,8 @@ public class TreatmentEditor
    * <!-- end-user-doc -->
    * @generated
    */
-  public void addSelectionChangedListener(ISelectionChangedListener listener)
+  @Override
+public void addSelectionChangedListener(ISelectionChangedListener listener)
   {
     selectionChangedListeners.add(listener);
   }
@@ -1691,7 +1714,8 @@ public class TreatmentEditor
    * <!-- end-user-doc -->
    * @generated
    */
-  public void removeSelectionChangedListener(ISelectionChangedListener listener)
+  @Override
+public void removeSelectionChangedListener(ISelectionChangedListener listener)
   {
     selectionChangedListeners.remove(listener);
   }
@@ -1702,7 +1726,8 @@ public class TreatmentEditor
    * <!-- end-user-doc -->
    * @generated
    */
-  public ISelection getSelection()
+  @Override
+public ISelection getSelection()
   {
     return editorSelection;
   }
@@ -1714,7 +1739,8 @@ public class TreatmentEditor
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSelection(ISelection selection)
+  @Override
+public void setSelection(ISelection selection)
   {
     editorSelection = selection;
 
@@ -1795,7 +1821,8 @@ public class TreatmentEditor
    * <!-- end-user-doc -->
    * @generated
    */
-  public void menuAboutToShow(IMenuManager menuManager)
+  @Override
+public void menuAboutToShow(IMenuManager menuManager)
   {
     ((IMenuListener)getEditorSite().getActionBarContributor()).menuAboutToShow(menuManager);
   }
