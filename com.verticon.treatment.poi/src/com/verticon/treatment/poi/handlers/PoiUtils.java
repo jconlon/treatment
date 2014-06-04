@@ -119,34 +119,39 @@ public class PoiUtils {
 		return result;
 	}
 
-	static String getStringValue(HSSFRow row,
-			EStructuralFeature feature, int index)
-			throws MissingCriticalDataException {
+	static String getStringValue(HSSFRow row, EStructuralFeature feature,
+			int index) throws MissingCriticalDataException {
 		String result = null;
-	
-		    if (index !=-1) {
-				try {
-					HSSFCell cellContents = row.getCell(index);
-					if (cellContents != null) {
-						switch (cellContents.getCellType()) {
-						case HSSFCell.CELL_TYPE_STRING:
-							result = cellContents.getStringCellValue();
-							break;
-						
-						default:
+
+		if (index != -1) {
+			try {
+				HSSFCell cellContents = row.getCell(index);
+				if (cellContents != null) {
+					switch (cellContents.getCellType()) {
+					case HSSFCell.CELL_TYPE_STRING:
+						result = cellContents.getStringCellValue();
+						break;
+					case HSSFCell.CELL_TYPE_NUMERIC:
+						result = Double.toString(cellContents
+								.getNumericCellValue());
+						result = result.replace(".0", "");
+						break;
+					default:
 						throw new MissingCriticalDataException(
-								"The string value in a critical spreadsheet cell has the wrong data type. Please make sure your spreadsheet column number "
+								"The string value in a critical spreadsheet cell has the wrong data type (id: "
+										+ cellContents.getCellType()
+										+ "). Please make sure your spreadsheet column number "
 										+ index
 										+ " is set to the string datatype.",
-									index,feature, row.getRowNum());
-							
-						}
-	
+								index, feature, row.getRowNum());
+
 					}
-				} catch (RuntimeException e) {
-					//just fall through and return a null
+
 				}
+			} catch (RuntimeException e) {
+				// just fall through and return a null
 			}
+		}
 		return result;
 	}
 
