@@ -7,22 +7,90 @@
 
 <plugin>
 
-   <extension point="org.eclipse.ui.newWizards">
+   <extension
+         point="org.eclipse.core.runtime.applications"
+         id="TreatmentEditorAdvisorApplication">
       <!-- @generated Treatment -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="com.verticon.treatment.presentation.TreatmentModelWizardID"
-            name="%_UI_TreatmentModelWizard_label"
-            class="com.verticon.treatment.presentation.TreatmentModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/TreatmentModelFile.gif">
-         <description>%_UI_TreatmentModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
+      <application>
+         <run class="com.verticon.treatment.presentation.TreatmentEditorAdvisor$Application"/>
+      </application>
    </extension>
 
+
+   <extension point="org.eclipse.ui.perspectives">
+      <!-- @generated Treatment -->
+      <perspective
+            name="%_UI_Perspective_label"
+            class="com.verticon.treatment.presentation.TreatmentEditorAdvisor$Perspective"
+            id="com.verticon.treatment.presentation.TreatmentEditorAdvisorPerspective">
+      </perspective>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <!-- @generated Treatment -->
+      <command
+            name="%_UI_Menu_OpenURI_label"
+            description="%_UI_Menu_OpenURI_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="com.verticon.treatment.presentation.TreatmentEditorAdvisorOpenURICommand"/>
+      <command
+            name="%_UI_Menu_Open_label"
+            description="%_UI_Menu_Open_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="com.verticon.treatment.presentation.TreatmentEditorAdvisorOpenCommand"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <!-- @generated Treatment -->
+      <key
+            commandId="com.verticon.treatment.presentation.TreatmentEditorAdvisorOpenURICommand"
+            sequence="M1+U"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="com.verticon.treatment.presentation.TreatmentEditorAdvisorOpenCommand"
+            sequence="M1+O"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated Treatment -->
+      <actionSet
+            label="%_UI_TreatmentEditorAdvisor_ActionSet_label"
+            visible="true"
+            id="TreatmentEditorAdvisorActionSet">
+         <action
+               label="%_UI_Menu_About_label"
+               class="com.verticon.treatment.presentation.TreatmentEditorAdvisor$AboutAction"
+               menubarPath="help/additions"
+               id="com.verticon.treatment.presentation.TreatmentEditorAdvisorAboutAction"/>
+         <action
+               label="%_UI_Menu_OpenURI_label"
+               definitionId="com.verticon.treatment.presentation.TreatmentEditorAdvisorOpenURICommand"
+               class="com.verticon.treatment.presentation.TreatmentEditorAdvisor$OpenURIAction"
+               menubarPath="file/additions"
+               id="com.verticon.treatment.presentation.TreatmentEditorAdvisorOpenURIAction"/>
+         <action
+               label="%_UI_Menu_Open_label"
+               definitionId="com.verticon.treatment.presentation.TreatmentEditorAdvisorOpenCommand"
+               class="com.verticon.treatment.presentation.TreatmentEditorAdvisor$OpenAction"
+               menubarPath="file/additions"
+               id="com.verticon.treatment.presentation.TreatmentEditorAdvisorOpenAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated Treatment -->
+      <actionSet
+            label="%_UI_TreatmentModelWizard_ActionSet_label"
+            visible="true"
+            id="com.verticon.treatment.presentation.TreatmentActionBarContributorActionSet">
+         <action
+               label="%_UI_TreatmentModelWizard_label"
+               class="com.verticon.treatment.presentation.TreatmentActionBarContributor$NewAction"
+               menubarPath="file/new/additions"
+               id="com.verticon.treatment.presentation.TreatmentActionBarContributorNewAction"/>
+      </actionSet>
+   </extension>
    <extension point="org.eclipse.ui.editors">
       <!-- @generated Treatment -->
       <editor

@@ -1,4 +1,4 @@
-@GenModel(copyrightFields="true", copyrightText="Copyright Verticon, Inc. 2014 All rights reserved.", editDirectory="/com.verticon.treatment.edit/src-gen", editorDirectory="/com.verticon.treatment.editor/src-gen", testsDirectory="/com.verticon.treatment.tests/src-gen", modelName="Treatment", prefix="Treatment", testSuiteClass="com.verticon.treatment.tests.TreatmentAllTests")
+@GenModel(copyrightFields="true", copyrightText="Copyright Verticon, Inc. 2014 All rights reserved.", editDirectory="/com.verticon.treatment.edit/src-gen", editorDirectory="/com.verticon.treatment.editor/src-gen", testsDirectory="/com.verticon.treatment.tests/src-gen", modelName="Treatment", prefix="Treatment", testSuiteClass="com.verticon.treatment.tests.TreatmentAllTests", runtimePlatform="RCP")
 package com.verticon.treatment
 
 import java.lang.RuntimeException
