@@ -45,9 +45,9 @@ import com.verticon.treatment.Program;
  * 
  */
 public class EventImportHandler extends AbstractHandler {
-
-	StringBuffer message = new StringBuffer("Imported: ");
-	volatile Exception ex = null;
+	
+	private StringBuffer message;
+	private volatile Exception ex = null;
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -57,7 +57,8 @@ public class EventImportHandler extends AbstractHandler {
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-
+		ex = null;
+		message = new StringBuffer("Imported: ");
 		IEditorPart editorPart = HandlerUtil.getActiveEditorChecked(event);
 
 		EditingDomain editingDomain = ((IEditingDomainProvider) editorPart
@@ -148,7 +149,8 @@ public class EventImportHandler extends AbstractHandler {
 		int count = 0;
 
 		try {
-			for (int i = 1; i < ws.getLastRowNum() + 1; i++) {
+			int rowsInSheet = ws.getPhysicalNumberOfRows();
+			for (int i = 1; i < rowsInSheet; i++) {
 				System.out.printf("Processing row %s%n", i);
 
 				monitor.worked(1);
