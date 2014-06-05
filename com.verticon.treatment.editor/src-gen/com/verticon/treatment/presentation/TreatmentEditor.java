@@ -15,7 +15,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -97,7 +96,6 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
-
 import com.verticon.treatment.provider.TreatmentItemProviderAdapterFactory;
 
 
@@ -290,8 +288,7 @@ public class TreatmentEditor
   protected IPartListener partListener =
     new IPartListener()
     {
-      @Override
-	public void partActivated(IWorkbenchPart p)
+      public void partActivated(IWorkbenchPart p)
       {
         if (p instanceof ContentOutline)
         {
@@ -315,23 +312,19 @@ public class TreatmentEditor
           handleActivate();
         }
       }
-      @Override
-	public void partBroughtToTop(IWorkbenchPart p)
+      public void partBroughtToTop(IWorkbenchPart p)
       {
         // Ignore.
       }
-      @Override
-	public void partClosed(IWorkbenchPart p)
+      public void partClosed(IWorkbenchPart p)
       {
         // Ignore.
       }
-      @Override
-	public void partDeactivated(IWorkbenchPart p)
+      public void partDeactivated(IWorkbenchPart p)
       {
         // Ignore.
       }
-      @Override
-	public void partOpened(IWorkbenchPart p)
+      public void partOpened(IWorkbenchPart p)
       {
         // Ignore.
       }
@@ -413,8 +406,7 @@ public class TreatmentEditor
                 getSite().getShell().getDisplay().asyncExec
                   (new Runnable()
                    {
-                     @Override
-					public void run()
+                     public void run()
                      {
                        updateProblemIndication();
                      }
@@ -446,8 +438,7 @@ public class TreatmentEditor
           getSite().getShell().getDisplay().asyncExec
             (new Runnable()
              {
-               @Override
-			public void run()
+               public void run()
                {
                  updateProblemIndication();
                }
@@ -648,14 +639,12 @@ public class TreatmentEditor
     commandStack.addCommandStackListener
       (new CommandStackListener()
        {
-         @Override
-		public void commandStackChanged(final EventObject event)
+         public void commandStackChanged(final EventObject event)
          {
            getContainer().getDisplay().asyncExec
              (new Runnable()
               {
-                @Override
-				public void run()
+                public void run()
                 {
                   firePropertyChange(IEditorPart.PROP_DIRTY);
 
@@ -716,8 +705,7 @@ public class TreatmentEditor
       Runnable runnable =
         new Runnable()
         {
-          @Override
-		public void run()
+          public void run()
           {
             // Try to select the items in the current content viewer of the editor.
             //
@@ -850,8 +838,7 @@ public EditingDomain getEditingDomain()
           {
             // This just notifies those things that are affected by the section.
             //
-            @Override
-			public void selectionChanged(SelectionChangedEvent selectionChangedEvent)
+            public void selectionChanged(SelectionChangedEvent selectionChangedEvent)
             {
               setSelection(selectionChangedEvent.getSelection());
             }
@@ -1416,8 +1403,7 @@ public Viewer getViewer()
          {
            // This ensures that we handle selections correctly.
            //
-           @Override
-		public void selectionChanged(SelectionChangedEvent event)
+           public void selectionChanged(SelectionChangedEvent event)
            {
              handleContentOutlineSelection(event.getSelection());
            }
@@ -1538,8 +1524,7 @@ public Viewer getViewer()
       {
         // This is the method that gets invoked when the operation runs.
         //
-        @Override
-		public void run(IProgressMonitor monitor)
+        public void run(IProgressMonitor monitor)
         {
           // Save the resources to the file system.
           //

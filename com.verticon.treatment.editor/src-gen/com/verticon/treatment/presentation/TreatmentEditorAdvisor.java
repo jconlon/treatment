@@ -173,22 +173,20 @@ public final class TreatmentEditorAdvisor extends WorkbenchAdvisor
      */
     public static final String ID_PERSPECTIVE = "com.verticon.treatment.presentation.TreatmentEditorAdvisorPerspective";
 
-    /**
-     * @see org.eclipse.ui.IPerspectiveFactory#createInitialLayout(org.eclipse.ui.IPageLayout)
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+    	/**
+		 * @see org.eclipse.ui.IPerspectiveFactory#createInitialLayout(org.eclipse.ui.IPageLayout)
+		 *      <!-- begin-user-doc --> Create a fixed layout with Editor top
+		 *      left, Properties top right, folder at the bottom containing the
+		 *      ResourceNavigator and a placeholder for the peoples view. This
+		 *      closes #7. <!-- end-user-doc -->
+		 * @generated NOT
+		 */
     @Override
 	public void createInitialLayout(IPageLayout layout)
     {
       layout.setEditorAreaVisible(true);
       layout.addPerspectiveShortcut(ID_PERSPECTIVE);
 			layout.setFixed(true);
-
-			// layout.addView("org.eclipse.ui.views.ResourceNavigator",
-			// IPageLayout.LEFT,
-			// (float) 0.25, layout.getEditorArea());
 
 			IFolderLayout bottom = layout.createFolder("bottom",
 					IPageLayout.BOTTOM, (float) 0.50, layout.getEditorArea());
@@ -207,12 +205,6 @@ public final class TreatmentEditorAdvisor extends WorkbenchAdvisor
 			viewLayout.setCloseable(false);
 			viewLayout.setMoveable(false);
 
-			//
-			// right.addView(IPageLayout.ID_PROP_SHEET);
-			//
-			// IFolderLayout bottonRight = layout.createFolder("bottomRight",
-			// IPageLayout.BOTTOM, (float) 0.60, "right");
-			// bottonRight.addView(IPageLayout.ID_PROP_SHEET);
     }
   }
   
