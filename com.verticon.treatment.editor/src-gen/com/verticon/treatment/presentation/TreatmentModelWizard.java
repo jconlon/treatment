@@ -57,564 +57,530 @@ import org.eclipse.swt.widgets.Text;
 public class TreatmentModelWizard extends Wizard implements INewWizard
 {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static final String copyright = "Copyright Verticon, Inc. 2014 All rights reserved.";
 
   /**
-   * The supported extensions for created files.
-   * <!-- begin-user-doc -->
+	 * The supported extensions for created files.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static final List<String> FILE_EXTENSIONS =
     Collections.unmodifiableList(Arrays.asList(TreatmentEditorPlugin.INSTANCE.getString("_UI_TreatmentEditorFilenameExtensions").split("\\s*,\\s*")));
 
   /**
-   * A formatted list of supported file extensions, suitable for display.
-   * <!-- begin-user-doc -->
+	 * A formatted list of supported file extensions, suitable for display.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static final String FORMATTED_FILE_EXTENSIONS =
     TreatmentEditorPlugin.INSTANCE.getString("_UI_TreatmentEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
   /**
-   * This caches an instance of the model package.
-   * <!-- begin-user-doc -->
+	 * This caches an instance of the model package.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected TreatmentPackage treatmentPackage = TreatmentPackage.eINSTANCE;
 
   /**
-   * This caches an instance of the model factory.
-   * <!-- begin-user-doc -->
+	 * This caches an instance of the model factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected TreatmentFactory treatmentFactory = treatmentPackage.getTreatmentFactory();
 
   /**
-   * This is the initial object creation page.
-   * <!-- begin-user-doc -->
+	 * This is the initial object creation page.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected TreatmentModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
   /**
-   * Remember the selection during initialization for populating the default container.
-   * <!-- begin-user-doc -->
+	 * Remember the selection during initialization for populating the default container.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected IStructuredSelection selection;
 
   /**
-   * Remember the workbench during initialization.
-   * <!-- begin-user-doc -->
+	 * Remember the workbench during initialization.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected IWorkbench workbench;
 
   /**
-   * Caches the names of the types that can be created as the root object.
-   * <!-- begin-user-doc -->
+	 * Caches the names of the types that can be created as the root object.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected List<String> initialObjectNames;
 
   /**
-   * This just records the information.
-   * <!-- begin-user-doc -->
+	 * This just records the information.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void init(IWorkbench workbench, IStructuredSelection selection)
   {
-    this.workbench = workbench;
-    this.selection = selection;
-    setWindowTitle(TreatmentEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
-    setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(TreatmentEditorPlugin.INSTANCE.getImage("full/wizban/NewTreatment")));
-  }
+		this.workbench = workbench;
+		this.selection = selection;
+		setWindowTitle(TreatmentEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
+		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(TreatmentEditorPlugin.INSTANCE.getImage("full/wizban/NewTreatment")));
+	}
 
   /**
-   * Returns the names of the types that can be created as the root object.
-   * <!-- begin-user-doc -->
+	 * Returns the names of the types that can be created as the root object.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected Collection<String> getInitialObjectNames()
   {
-    if (initialObjectNames == null)
-    {
-      initialObjectNames = new ArrayList<String>();
-      for (EClassifier eClassifier : treatmentPackage.getEClassifiers())
-      {
-        if (eClassifier instanceof EClass)
-        {
-          EClass eClass = (EClass)eClassifier;
-          if (!eClass.isAbstract())
-          {
-            initialObjectNames.add(eClass.getName());
-          }
-        }
-      }
-      Collections.sort(initialObjectNames, java.text.Collator.getInstance());
-    }
-    return initialObjectNames;
-  }
+		if (initialObjectNames == null) {
+			initialObjectNames = new ArrayList<String>();
+			for (EClassifier eClassifier : treatmentPackage.getEClassifiers()) {
+				if (eClassifier instanceof EClass) {
+					EClass eClass = (EClass)eClassifier;
+					if (!eClass.isAbstract()) {
+						initialObjectNames.add(eClass.getName());
+					}
+				}
+			}
+			Collections.sort(initialObjectNames, java.text.Collator.getInstance());
+		}
+		return initialObjectNames;
+	}
 
   /**
-   * Create a new model.
-   * <!-- begin-user-doc -->
+	 * Create a new model.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected EObject createInitialModel()
   {
-    EClass eClass = (EClass)treatmentPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
-    EObject rootObject = treatmentFactory.create(eClass);
-    return rootObject;
-  }
+		EClass eClass = (EClass)treatmentPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		EObject rootObject = treatmentFactory.create(eClass);
+		return rootObject;
+	}
 
   /**
-   * Do the work after everything is specified.
-   * <!-- begin-user-doc -->
+	 * Do the work after everything is specified.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean performFinish()
   {
-    try
-    {
-      // Get the URI of the model file.
-      //
-      final URI fileURI = getModelURI();
-      if (new File(fileURI.toFileString()).exists())
-      {
-        if (!MessageDialog.openQuestion
-            (getShell(),
-             TreatmentEditorPlugin.INSTANCE.getString("_UI_Question_title"),
-             TreatmentEditorPlugin.INSTANCE.getString("_WARN_FileConflict", new String []{ fileURI.toFileString() })))
-        {
-          initialObjectCreationPage.selectFileField();
-          return false;
-        }
-      }
-      
-      // Do the work within an operation.
-      //
-      IRunnableWithProgress operation = new IRunnableWithProgress()
-      {
-        public void run(IProgressMonitor progressMonitor)
-          {
-            try
-            {
-              // Create a resource set
-              //
-              ResourceSet resourceSet = new ResourceSetImpl();
+		try {
+			// Get the URI of the model file.
+			//
+			final URI fileURI = getModelURI();
+			if (new File(fileURI.toFileString()).exists()) {
+				if (!MessageDialog.openQuestion
+						(getShell(),
+						 TreatmentEditorPlugin.INSTANCE.getString("_UI_Question_title"),
+						 TreatmentEditorPlugin.INSTANCE.getString("_WARN_FileConflict", new String []{ fileURI.toFileString() }))) {
+					initialObjectCreationPage.selectFileField();
+					return false;
+				}
+			}
+			
+			// Do the work within an operation.
+			//
+			IRunnableWithProgress operation = new IRunnableWithProgress() {
+				public void run(IProgressMonitor progressMonitor) {
+						try {
+							// Create a resource set
+							//
+							ResourceSet resourceSet = new ResourceSetImpl();
 
-              // Create a resource for this file.
-              //
-              Resource resource = resourceSet.createResource(fileURI);
+							// Create a resource for this file.
+							//
+							Resource resource = resourceSet.createResource(fileURI);
 
-              // Add the initial model object to the contents.
-              //
-              EObject rootObject = createInitialModel();
-              if (rootObject != null)
-              {
-                resource.getContents().add(rootObject);
-              }
+							// Add the initial model object to the contents.
+							//
+							EObject rootObject = createInitialModel();
+							if (rootObject != null) {
+								resource.getContents().add(rootObject);
+							}
 
-              // Save the contents of the resource to the file system.
-              //
-              Map<Object, Object> options = new HashMap<Object, Object>();
-              options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
-              resource.save(options);
-            }
-            catch (Exception exception)
-            {
-              TreatmentEditorPlugin.INSTANCE.log(exception);
-            }
-            finally
-            {
-              progressMonitor.done();
-            }
-          }
-        };
+							// Save the contents of the resource to the file system.
+							//
+							Map<Object, Object> options = new HashMap<Object, Object>();
+							options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
+							resource.save(options);
+						}
+						catch (Exception exception) {
+							TreatmentEditorPlugin.INSTANCE.log(exception);
+						}
+						finally {
+							progressMonitor.done();
+						}
+					}
+				};
 
-      getContainer().run(false, false, operation);
+			getContainer().run(false, false, operation);
 
-      return TreatmentEditorAdvisor.openEditor(workbench, fileURI);			
-    }
-    catch (Exception exception)
-    {
-      TreatmentEditorPlugin.INSTANCE.log(exception);
-      return false;
-    }
-  }
+			return TreatmentEditorAdvisor.openEditor(workbench, fileURI);			
+		}
+		catch (Exception exception) {
+			TreatmentEditorPlugin.INSTANCE.log(exception);
+			return false;
+		}
+	}
 
   /**
-   * This is the page where the type of object to create is selected.
-   * <!-- begin-user-doc -->
+	 * This is the page where the type of object to create is selected.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public class TreatmentModelWizardInitialObjectCreationPage extends WizardPage
   {
     /**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     protected Text fileField;
 
     /**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     protected Combo initialObjectField;
 
     /**
-     * @generated
-     * <!-- begin-user-doc -->
+		 * @generated
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     */
+		 */
     protected List<String> encodings;
 
     /**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     protected Combo encodingField;
 
     /**
-     * Pass in the selection.
-     * <!-- begin-user-doc -->
+		 * Pass in the selection.
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     public TreatmentModelWizardInitialObjectCreationPage(String pageId)
     {
-      super(pageId);
-    }
+			super(pageId);
+		}
 
     /**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     public void createControl(Composite parent)
     {
-      Composite composite = new Composite(parent, SWT.NONE);
-      {
-        GridLayout layout = new GridLayout();
-        layout.numColumns = 1;
-        layout.verticalSpacing = 12;
-        composite.setLayout(layout);
+			Composite composite = new Composite(parent, SWT.NONE); {
+				GridLayout layout = new GridLayout();
+				layout.numColumns = 1;
+				layout.verticalSpacing = 12;
+				composite.setLayout(layout);
 
-        GridData data = new GridData();
-        data.verticalAlignment = GridData.FILL;
-        data.grabExcessVerticalSpace = true;
-        data.horizontalAlignment = GridData.FILL;
-        composite.setLayoutData(data);
-      }
-      
-      Label resourceURILabel = new Label(composite, SWT.LEFT);
-      {
-        resourceURILabel.setText(TreatmentEditorPlugin.INSTANCE.getString("_UI_File_label"));
+				GridData data = new GridData();
+				data.verticalAlignment = GridData.FILL;
+				data.grabExcessVerticalSpace = true;
+				data.horizontalAlignment = GridData.FILL;
+				composite.setLayoutData(data);
+			}
+			
+			Label resourceURILabel = new Label(composite, SWT.LEFT);
+			{
+				resourceURILabel.setText(TreatmentEditorPlugin.INSTANCE.getString("_UI_File_label"));
 
-        GridData data = new GridData();
-        data.horizontalAlignment = GridData.FILL;
-        resourceURILabel.setLayoutData(data);
-      }
+				GridData data = new GridData();
+				data.horizontalAlignment = GridData.FILL;
+				resourceURILabel.setLayoutData(data);
+			}
 
-      Composite fileComposite = new Composite(composite, SWT.NONE);
-      {
-        GridData data = new GridData();
-        data.horizontalAlignment = GridData.END;
-        fileComposite.setLayoutData(data);
+			Composite fileComposite = new Composite(composite, SWT.NONE);
+			{
+				GridData data = new GridData();
+				data.horizontalAlignment = GridData.END;
+				fileComposite.setLayoutData(data);
 
-        GridLayout layout = new GridLayout();
-        data.horizontalAlignment = GridData.FILL;
-        layout.marginHeight = 0;
-        layout.marginWidth = 0;
-        layout.numColumns = 2;
-        fileComposite.setLayout(layout);
-      }
+				GridLayout layout = new GridLayout();
+				data.horizontalAlignment = GridData.FILL;
+				layout.marginHeight = 0;
+				layout.marginWidth = 0;
+				layout.numColumns = 2;
+				fileComposite.setLayout(layout);
+			}
 
-      fileField = new Text(fileComposite, SWT.BORDER);
-      {
-        GridData data = new GridData();
-        data.horizontalAlignment = GridData.FILL;
-        data.grabExcessHorizontalSpace = true;
-        data.horizontalSpan = 1;
-        fileField.setLayoutData(data);
-      }
+			fileField = new Text(fileComposite, SWT.BORDER);
+			{
+				GridData data = new GridData();
+				data.horizontalAlignment = GridData.FILL;
+				data.grabExcessHorizontalSpace = true;
+				data.horizontalSpan = 1;
+				fileField.setLayoutData(data);
+			}
 
-      fileField.addModifyListener(validator);
+			fileField.addModifyListener(validator);
 
-      Button resourceURIBrowseFileSystemButton = new Button(fileComposite, SWT.PUSH);
-      resourceURIBrowseFileSystemButton.setText(TreatmentEditorPlugin.INSTANCE.getString("_UI_Browse_label"));
+			Button resourceURIBrowseFileSystemButton = new Button(fileComposite, SWT.PUSH);
+			resourceURIBrowseFileSystemButton.setText(TreatmentEditorPlugin.INSTANCE.getString("_UI_Browse_label"));
 
-      resourceURIBrowseFileSystemButton.addSelectionListener
-        (new SelectionAdapter()
-         {
-           @Override
-           public void widgetSelected(SelectionEvent event)
-           {
-             String[] filters = TreatmentEditor.FILE_EXTENSION_FILTERS.toArray(new String[TreatmentEditor.FILE_EXTENSION_FILTERS.size()]);
-             String[] files = TreatmentEditorAdvisor.openFilePathDialog(getShell(), SWT.SAVE, filters);
-             if (files.length > 0)
-             {
-               fileField.setText(files[0]);
-             }
-           }
-         });
-      Label containerLabel = new Label(composite, SWT.LEFT);
-      {
-        containerLabel.setText(TreatmentEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
+			resourceURIBrowseFileSystemButton.addSelectionListener
+				(new SelectionAdapter() {
+					 @Override
+					 public void widgetSelected(SelectionEvent event) {
+						 String[] filters = TreatmentEditor.FILE_EXTENSION_FILTERS.toArray(new String[TreatmentEditor.FILE_EXTENSION_FILTERS.size()]);
+						 String[] files = TreatmentEditorAdvisor.openFilePathDialog(getShell(), SWT.SAVE, filters);
+						 if (files.length > 0) {
+							 fileField.setText(files[0]);
+						 }
+					 }
+				 });
+			Label containerLabel = new Label(composite, SWT.LEFT);
+			{
+				containerLabel.setText(TreatmentEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
 
-        GridData data = new GridData();
-        data.horizontalAlignment = GridData.FILL;
-        containerLabel.setLayoutData(data);
-      }
+				GridData data = new GridData();
+				data.horizontalAlignment = GridData.FILL;
+				containerLabel.setLayoutData(data);
+			}
 
-      initialObjectField = new Combo(composite, SWT.BORDER);
-      {
-        GridData data = new GridData();
-        data.horizontalAlignment = GridData.FILL;
-        data.grabExcessHorizontalSpace = true;
-        initialObjectField.setLayoutData(data);
-      }
+			initialObjectField = new Combo(composite, SWT.BORDER);
+			{
+				GridData data = new GridData();
+				data.horizontalAlignment = GridData.FILL;
+				data.grabExcessHorizontalSpace = true;
+				initialObjectField.setLayoutData(data);
+			}
 
-      for (String objectName : getInitialObjectNames())
-      {
-        initialObjectField.add(getLabel(objectName));
-      }
+			for (String objectName : getInitialObjectNames()) {
+				initialObjectField.add(getLabel(objectName));
+			}
 
-      if (initialObjectField.getItemCount() == 1)
-      {
-        initialObjectField.select(0);
-      }
-      initialObjectField.addModifyListener(validator);
+			if (initialObjectField.getItemCount() == 1) {
+				initialObjectField.select(0);
+			}
+			initialObjectField.addModifyListener(validator);
 
-      Label encodingLabel = new Label(composite, SWT.LEFT);
-      {
-        encodingLabel.setText(TreatmentEditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
+			Label encodingLabel = new Label(composite, SWT.LEFT);
+			{
+				encodingLabel.setText(TreatmentEditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
 
-        GridData data = new GridData();
-        data.horizontalAlignment = GridData.FILL;
-        encodingLabel.setLayoutData(data);
-      }
-      encodingField = new Combo(composite, SWT.BORDER);
-      {
-        GridData data = new GridData();
-        data.horizontalAlignment = GridData.FILL;
-        data.grabExcessHorizontalSpace = true;
-        encodingField.setLayoutData(data);
-      }
+				GridData data = new GridData();
+				data.horizontalAlignment = GridData.FILL;
+				encodingLabel.setLayoutData(data);
+			}
+			encodingField = new Combo(composite, SWT.BORDER);
+			{
+				GridData data = new GridData();
+				data.horizontalAlignment = GridData.FILL;
+				data.grabExcessHorizontalSpace = true;
+				encodingField.setLayoutData(data);
+			}
 
-      for (String encoding : getEncodings())
-      {
-        encodingField.add(encoding);
-      }
+			for (String encoding : getEncodings()) {
+				encodingField.add(encoding);
+			}
 
-      encodingField.select(0);
-      encodingField.addModifyListener(validator);
+			encodingField.select(0);
+			encodingField.addModifyListener(validator);
 
-      setPageComplete(validatePage());
-      setControl(composite);
-    }
+			setPageComplete(validatePage());
+			setControl(composite);
+		}
 
     /**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     protected ModifyListener validator =
-      new ModifyListener()
-      {
-        public void modifyText(ModifyEvent e)
-        {
-          setPageComplete(validatePage());
-        }
-      };
+      new ModifyListener() {
+				public void modifyText(ModifyEvent e) {
+					setPageComplete(validatePage());
+				}
+			};
 
     /**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     protected boolean validatePage()
     {
-      URI fileURI = getFileURI();
-      if (fileURI == null || fileURI.isEmpty())
-      {
-        setErrorMessage(null);
-        return false;
-      }
+			URI fileURI = getFileURI();
+			if (fileURI == null || fileURI.isEmpty()) {
+				setErrorMessage(null);
+				return false;
+			}
 
-      String extension = fileURI.fileExtension();
-      if (extension == null || !FILE_EXTENSIONS.contains(extension))
-      {
-        String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
-        setErrorMessage(TreatmentEditorPlugin.INSTANCE.getString(key, new Object [] { FORMATTED_FILE_EXTENSIONS }));
-        return false;
-      }
+			String extension = fileURI.fileExtension();
+			if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
+				String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
+				setErrorMessage(TreatmentEditorPlugin.INSTANCE.getString(key, new Object [] { FORMATTED_FILE_EXTENSIONS }));
+				return false;
+			}
 
-      setErrorMessage(null);
-      return getInitialObjectName() != null && getEncodings().contains(encodingField.getText());
-    }
+			setErrorMessage(null);
+			return getInitialObjectName() != null && getEncodings().contains(encodingField.getText());
+		}
 
     /**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     @Override
     public void setVisible(boolean visible)
     {
-      super.setVisible(visible);
-      if (visible)
-      {
-        initialObjectField.clearSelection();
-        encodingField.clearSelection();
-        fileField.setFocus();
-      }
-    }
+			super.setVisible(visible);
+			if (visible) {
+				initialObjectField.clearSelection();
+				encodingField.clearSelection();
+				fileField.setFocus();
+			}
+		}
 
     /**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     public String getInitialObjectName()
     {
-      String label = initialObjectField.getText();
+			String label = initialObjectField.getText();
 
-      for (String name : getInitialObjectNames())
-      {
-        if (getLabel(name).equals(label))
-        {
-          return name;
-        }
-      }
-      return null;
-    }
+			for (String name : getInitialObjectNames()) {
+				if (getLabel(name).equals(label)) {
+					return name;
+				}
+			}
+			return null;
+		}
 
     /**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     public String getEncoding()
     {
-      return encodingField.getText();
-    }
+			return encodingField.getText();
+		}
 
     /**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     public URI getFileURI()
     {
-      try
-      {
-        return URI.createFileURI(fileField.getText());
-      }
-      catch (Exception exception)
-      {
-        // Ignore
-      }
-      return null;
-    }
+			try {
+				return URI.createFileURI(fileField.getText());
+			}
+			catch (Exception exception) {
+				// Ignore
+			}
+			return null;
+		}
 
     /**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     public void selectFileField()
     {
-        initialObjectField.clearSelection();
-        encodingField.clearSelection();
-        fileField.selectAll();
-        fileField.setFocus();
-    }
+				initialObjectField.clearSelection();
+				encodingField.clearSelection();
+				fileField.selectAll();
+				fileField.setFocus();
+		}
 
     /**
-     * Returns the label for the specified type name.
-     * <!-- begin-user-doc -->
+		 * Returns the label for the specified type name.
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     protected String getLabel(String typeName)
     {
-      try
-      {
-        return TreatmentEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
-      }
-      catch(MissingResourceException mre)
-      {
-        TreatmentEditorPlugin.INSTANCE.log(mre);
-      }
-      return typeName;
-    }
+			try {
+				return TreatmentEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
+			}
+			catch(MissingResourceException mre) {
+				TreatmentEditorPlugin.INSTANCE.log(mre);
+			}
+			return typeName;
+		}
 
     /**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     protected Collection<String> getEncodings()
     {
-      if (encodings == null)
-      {
-        encodings = new ArrayList<String>();
-        for (StringTokenizer stringTokenizer = new StringTokenizer(TreatmentEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); )
-        {
-          encodings.add(stringTokenizer.nextToken());
-        }
-      }
-      return encodings;
-    }
+			if (encodings == null) {
+				encodings = new ArrayList<String>();
+				for (StringTokenizer stringTokenizer = new StringTokenizer(TreatmentEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) {
+					encodings.add(stringTokenizer.nextToken());
+				}
+			}
+			return encodings;
+		}
   }
 
   /**
-   * The framework calls this to create the contents of the wizard.
-   * <!-- begin-user-doc -->
+	 * The framework calls this to create the contents of the wizard.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
     @Override
   public void addPages()
   {
-    initialObjectCreationPage = new TreatmentModelWizardInitialObjectCreationPage("Whatever2");
-    initialObjectCreationPage.setTitle(TreatmentEditorPlugin.INSTANCE.getString("_UI_TreatmentModelWizard_label"));
-    initialObjectCreationPage.setDescription(TreatmentEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
-    addPage(initialObjectCreationPage);
-  }
+		initialObjectCreationPage = new TreatmentModelWizardInitialObjectCreationPage("Whatever2");
+		initialObjectCreationPage.setTitle(TreatmentEditorPlugin.INSTANCE.getString("_UI_TreatmentModelWizard_label"));
+		initialObjectCreationPage.setDescription(TreatmentEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
+		addPage(initialObjectCreationPage);
+	}
 
   /**
-   * Get the URI from the page.
-   * <!-- begin-user-doc -->
+	 * Get the URI from the page.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public URI getModelURI()
   {
-    return initialObjectCreationPage.getFileURI();
-  }
+		return initialObjectCreationPage.getFileURI();
+	}
 
 }

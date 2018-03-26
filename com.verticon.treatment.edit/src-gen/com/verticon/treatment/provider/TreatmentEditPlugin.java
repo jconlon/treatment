@@ -19,44 +19,43 @@ import com.verticon.naming.INameService;
 public final class TreatmentEditPlugin extends EMFPlugin
 {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static final String copyright = "Copyright Verticon, Inc. 2014 All rights reserved.";
 
   /**
-   * Keep track of the singleton.
-   * <!-- begin-user-doc -->
+	 * Keep track of the singleton.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static final TreatmentEditPlugin INSTANCE = new TreatmentEditPlugin();
 
   /**
-   * Keep track of the singleton.
-   * <!-- begin-user-doc -->
+	 * Keep track of the singleton.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   private static Implementation plugin;
 
 	private static ServiceTracker<INameService, INameService> nameServiceTracker;
 
 
   /**
-   * Create the instance.
-   * <!-- begin-user-doc -->
+	 * Create the instance.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public TreatmentEditPlugin()
   {
-    super
-      (new ResourceLocator [] 
-       {
-       });
-  }
+		super
+		  (new ResourceLocator [] {
+		   });
+	}
 
 	String getName(String account) {
 		if (nameServiceTracker != null
@@ -68,52 +67,52 @@ public final class TreatmentEditPlugin extends EMFPlugin
 	}
 
   /**
-   * Returns the singleton instance of the Eclipse plugin.
-   * <!-- begin-user-doc -->
+	 * Returns the singleton instance of the Eclipse plugin.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the singleton instance.
-   * @generated
-   */
+	 * @return the singleton instance.
+	 * @generated
+	 */
   @Override
   public ResourceLocator getPluginResourceLocator()
   {
-    return plugin;
-  }
+		return plugin;
+	}
 
   /**
-   * Returns the singleton instance of the Eclipse plugin.
-   * <!-- begin-user-doc -->
+	 * Returns the singleton instance of the Eclipse plugin.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the singleton instance.
-   * @generated
-   */
+	 * @return the singleton instance.
+	 * @generated
+	 */
   public static Implementation getPlugin()
   {
-    return plugin;
-  }
+		return plugin;
+	}
 
   /**
-   * The actual implementation of the Eclipse <b>Plugin</b>.
-   * <!-- begin-user-doc -->
+	 * The actual implementation of the Eclipse <b>Plugin</b>.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static class Implementation extends EclipsePlugin
   {
     /**
-     * Creates an instance.
-     * <!-- begin-user-doc -->
+		 * Creates an instance.
+		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
     public Implementation()
     {
-      super();
+			super();
 
-      // Remember the static instance.
-      //
-      plugin = this;
-    }
+			// Remember the static instance.
+			//
+			plugin = this;
+		}
 
 		/*
 		 * (non-Javadoc)

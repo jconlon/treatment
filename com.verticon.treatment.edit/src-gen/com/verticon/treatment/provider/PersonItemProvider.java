@@ -48,548 +48,546 @@ public class PersonItemProvider
 		ITableItemLabelProvider
 {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static final String copyright = "Copyright Verticon, Inc. 2014 All rights reserved.";
 
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc -->
+	 * This constructs an instance from a factory and a notifier.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public PersonItemProvider(AdapterFactory adapterFactory)
   {
-    super(adapterFactory);
-  }
+		super(adapterFactory);
+	}
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc -->
+	 * This returns the property descriptors for the adapted class.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object)
   {
-    if (itemPropertyDescriptors == null)
-    {
-      super.getPropertyDescriptors(object);
+		if (itemPropertyDescriptors == null) {
+			super.getPropertyDescriptors(object);
 
-      addAccountPropertyDescriptor(object);
-      addCommentsPropertyDescriptor(object);
-      addStartDatePropertyDescriptor(object);
-      addCurrentPhasePropertyDescriptor(object);
-      addEnteredPhasePropertyDescriptor(object);
-      addDaysInPhasePropertyDescriptor(object);
-      addCurrentSoberDaysPropertyDescriptor(object);
-      addTotalSoberDaysPropertyDescriptor(object);
-      addDaysInCustodyPropertyDescriptor(object);
-      addRelapsesPropertyDescriptor(object);
-      addLastRelapsePropertyDescriptor(object);
-      addOtherViolationsPropertyDescriptor(object);
-      addLastViolationPropertyDescriptor(object);
-      addDaysInProgramPropertyDescriptor(object);
-      addLastIncentivePropertyDescriptor(object);
-      addIncentivesPropertyDescriptor(object);
-      addLastSanctionPropertyDescriptor(object);
-      addSanctionsPropertyDescriptor(object);
-    }
-    return itemPropertyDescriptors;
-  }
+			addAccountPropertyDescriptor(object);
+			addCommentsPropertyDescriptor(object);
+			addStartDatePropertyDescriptor(object);
+			addCurrentPhasePropertyDescriptor(object);
+			addEnteredPhasePropertyDescriptor(object);
+			addDaysInPhasePropertyDescriptor(object);
+			addCurrentSoberDaysPropertyDescriptor(object);
+			addTotalSoberDaysPropertyDescriptor(object);
+			addDaysInCustodyPropertyDescriptor(object);
+			addRelapsesPropertyDescriptor(object);
+			addLastRelapsePropertyDescriptor(object);
+			addOtherViolationsPropertyDescriptor(object);
+			addLastViolationPropertyDescriptor(object);
+			addDaysInProgramPropertyDescriptor(object);
+			addLastIncentivePropertyDescriptor(object);
+			addIncentivesPropertyDescriptor(object);
+			addLastSanctionPropertyDescriptor(object);
+			addSanctionsPropertyDescriptor(object);
+		}
+		return itemPropertyDescriptors;
+	}
 
   /**
-   * This adds a property descriptor for the Account feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Account feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addAccountPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_account_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Person_account_feature", "_UI_Person_type"),
-         TreatmentPackage.Literals.PERSON__ACCOUNT,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         null,
-         null));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_account_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Person_account_feature", "_UI_Person_type"),
+				 TreatmentPackage.Literals.PERSON__ACCOUNT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
   /**
-   * This adds a property descriptor for the Comments feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Comments feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addCommentsPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_comments_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Person_comments_feature", "_UI_Person_type"),
-         TreatmentPackage.Literals.PERSON__COMMENTS,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         null,
-         null));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_comments_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Person_comments_feature", "_UI_Person_type"),
+				 TreatmentPackage.Literals.PERSON__COMMENTS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
   /**
-   * This adds a property descriptor for the Start Date feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Start Date feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addStartDatePropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_startDate_feature"),
-         getString("_UI_Person_startDate_description"),
-         TreatmentPackage.Literals.PERSON__START_DATE,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         getString("_UI_ProgramPropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_startDate_feature"),
+				 getString("_UI_Person_startDate_description"),
+				 TreatmentPackage.Literals.PERSON__START_DATE,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_ProgramPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Current Phase feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Current Phase feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addCurrentPhasePropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_currentPhase_feature"),
-         getString("_UI_Person_currentPhase_description"),
-         TreatmentPackage.Literals.PERSON__CURRENT_PHASE,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         getString("_UI_PhasePropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_currentPhase_feature"),
+				 getString("_UI_Person_currentPhase_description"),
+				 TreatmentPackage.Literals.PERSON__CURRENT_PHASE,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_PhasePropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Entered Phase feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Entered Phase feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addEnteredPhasePropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_enteredPhase_feature"),
-         getString("_UI_Person_enteredPhase_description"),
-         TreatmentPackage.Literals.PERSON__ENTERED_PHASE,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         getString("_UI_PhasePropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_enteredPhase_feature"),
+				 getString("_UI_Person_enteredPhase_description"),
+				 TreatmentPackage.Literals.PERSON__ENTERED_PHASE,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_PhasePropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Days In Phase feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Days In Phase feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addDaysInPhasePropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_daysInPhase_feature"),
-         getString("_UI_Person_daysInPhase_description"),
-         TreatmentPackage.Literals.PERSON__DAYS_IN_PHASE,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-         getString("_UI_PhasePropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_daysInPhase_feature"),
+				 getString("_UI_Person_daysInPhase_description"),
+				 TreatmentPackage.Literals.PERSON__DAYS_IN_PHASE,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 getString("_UI_PhasePropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Current Sober Days feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Current Sober Days feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addCurrentSoberDaysPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_currentSoberDays_feature"),
-         getString("_UI_Person_currentSoberDays_description"),
-         TreatmentPackage.Literals.PERSON__CURRENT_SOBER_DAYS,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-         getString("_UI_SobrietyPropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_currentSoberDays_feature"),
+				 getString("_UI_Person_currentSoberDays_description"),
+				 TreatmentPackage.Literals.PERSON__CURRENT_SOBER_DAYS,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 getString("_UI_SobrietyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Total Sober Days feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Total Sober Days feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addTotalSoberDaysPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_totalSoberDays_feature"),
-         getString("_UI_Person_totalSoberDays_description"),
-         TreatmentPackage.Literals.PERSON__TOTAL_SOBER_DAYS,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-         getString("_UI_SobrietyPropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_totalSoberDays_feature"),
+				 getString("_UI_Person_totalSoberDays_description"),
+				 TreatmentPackage.Literals.PERSON__TOTAL_SOBER_DAYS,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 getString("_UI_SobrietyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Days In Custody feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Days In Custody feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addDaysInCustodyPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_daysInCustody_feature"),
-         getString("_UI_Person_daysInCustody_description"),
-         TreatmentPackage.Literals.PERSON__DAYS_IN_CUSTODY,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-         getString("_UI_ViolationsPropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_daysInCustody_feature"),
+				 getString("_UI_Person_daysInCustody_description"),
+				 TreatmentPackage.Literals.PERSON__DAYS_IN_CUSTODY,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 getString("_UI_ViolationsPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Relapses feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Relapses feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addRelapsesPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_relapses_feature"),
-         getString("_UI_Person_relapses_description"),
-         TreatmentPackage.Literals.PERSON__RELAPSES,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-         getString("_UI_ViolationsPropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_relapses_feature"),
+				 getString("_UI_Person_relapses_description"),
+				 TreatmentPackage.Literals.PERSON__RELAPSES,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 getString("_UI_ViolationsPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Last Relapse feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Last Relapse feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addLastRelapsePropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_lastRelapse_feature"),
-         getString("_UI_Person_lastRelapse_description"),
-         TreatmentPackage.Literals.PERSON__LAST_RELAPSE,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         getString("_UI_ViolationsPropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_lastRelapse_feature"),
+				 getString("_UI_Person_lastRelapse_description"),
+				 TreatmentPackage.Literals.PERSON__LAST_RELAPSE,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_ViolationsPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Other Violations feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Other Violations feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addOtherViolationsPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_otherViolations_feature"),
-         getString("_UI_Person_otherViolations_description"),
-         TreatmentPackage.Literals.PERSON__OTHER_VIOLATIONS,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-         getString("_UI_ViolationsPropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_otherViolations_feature"),
+				 getString("_UI_Person_otherViolations_description"),
+				 TreatmentPackage.Literals.PERSON__OTHER_VIOLATIONS,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 getString("_UI_ViolationsPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Last Violation feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Last Violation feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addLastViolationPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_lastViolation_feature"),
-         getString("_UI_Person_lastViolation_description"),
-         TreatmentPackage.Literals.PERSON__LAST_VIOLATION,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         getString("_UI_ViolationsPropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_lastViolation_feature"),
+				 getString("_UI_Person_lastViolation_description"),
+				 TreatmentPackage.Literals.PERSON__LAST_VIOLATION,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_ViolationsPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Days In Program feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Days In Program feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addDaysInProgramPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_daysInProgram_feature"),
-         getString("_UI_Person_daysInProgram_description"),
-         TreatmentPackage.Literals.PERSON__DAYS_IN_PROGRAM,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-         getString("_UI_ProgramPropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_daysInProgram_feature"),
+				 getString("_UI_Person_daysInProgram_description"),
+				 TreatmentPackage.Literals.PERSON__DAYS_IN_PROGRAM,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 getString("_UI_ProgramPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Last Incentive feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Last Incentive feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addLastIncentivePropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_lastIncentive_feature"),
-         getString("_UI_Person_lastIncentive_description"),
-         TreatmentPackage.Literals.PERSON__LAST_INCENTIVE,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         getString("_UI_IncentivesPropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_lastIncentive_feature"),
+				 getString("_UI_Person_lastIncentive_description"),
+				 TreatmentPackage.Literals.PERSON__LAST_INCENTIVE,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_IncentivesPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Incentives feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Incentives feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addIncentivesPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_incentives_feature"),
-         getString("_UI_Person_incentives_description"),
-         TreatmentPackage.Literals.PERSON__INCENTIVES,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-         getString("_UI_IncentivesPropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_incentives_feature"),
+				 getString("_UI_Person_incentives_description"),
+				 TreatmentPackage.Literals.PERSON__INCENTIVES,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 getString("_UI_IncentivesPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Last Sanction feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Last Sanction feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addLastSanctionPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_lastSanction_feature"),
-         getString("_UI_Person_lastSanction_description"),
-         TreatmentPackage.Literals.PERSON__LAST_SANCTION,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         getString("_UI_IncentivesPropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_lastSanction_feature"),
+				 getString("_UI_Person_lastSanction_description"),
+				 TreatmentPackage.Literals.PERSON__LAST_SANCTION,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_IncentivesPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This adds a property descriptor for the Sanctions feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Sanctions feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addSanctionsPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Person_sanctions_feature"),
-         getString("_UI_Person_sanctions_description"),
-         TreatmentPackage.Literals.PERSON__SANCTIONS,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-         getString("_UI_IncentivesPropertyCategory"),
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_sanctions_feature"),
+				 getString("_UI_Person_sanctions_description"),
+				 TreatmentPackage.Literals.PERSON__SANCTIONS,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 getString("_UI_IncentivesPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   /**
-   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-   * <!-- begin-user-doc -->
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
   {
-    if (childrenFeatures == null)
-    {
-      super.getChildrenFeatures(object);
-      childrenFeatures.add(TreatmentPackage.Literals.PERSON__EVENTS);
-    }
-    return childrenFeatures;
-  }
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(TreatmentPackage.Literals.PERSON__EVENTS);
+		}
+		return childrenFeatures;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EStructuralFeature getChildFeature(Object object, Object child)
   {
-    // Check the type of the specified child object and return the proper feature to use for
-    // adding (see {@link AddCommand}) it as a child.
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
 
-    return super.getChildFeature(object, child);
-  }
+		return super.getChildFeature(object, child);
+	}
 
   /**
-   * This returns Person.gif.
-   * <!-- begin-user-doc -->
+	 * This returns Person.gif.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object getImage(Object object)
   {
-    return overlayImage(object, getResourceLocator().getImage("full/obj16/Person"));
-  }
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Person"));
+	}
 
   	/**
 	 * This returns the label text for the adapted class. <!-- begin-user-doc
@@ -612,45 +610,44 @@ public class PersonItemProvider
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc -->
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void notifyChanged(Notification notification)
   {
-    updateChildren(notification);
+		updateChildren(notification);
 
-    switch (notification.getFeatureID(Person.class))
-    {
-      case TreatmentPackage.PERSON__ACCOUNT:
-      case TreatmentPackage.PERSON__COMMENTS:
-      case TreatmentPackage.PERSON__START_DATE:
-      case TreatmentPackage.PERSON__CURRENT_PHASE:
-      case TreatmentPackage.PERSON__ENTERED_PHASE:
-      case TreatmentPackage.PERSON__DAYS_IN_PHASE:
-      case TreatmentPackage.PERSON__CURRENT_SOBER_DAYS:
-      case TreatmentPackage.PERSON__TOTAL_SOBER_DAYS:
-      case TreatmentPackage.PERSON__DAYS_IN_CUSTODY:
-      case TreatmentPackage.PERSON__RELAPSES:
-      case TreatmentPackage.PERSON__LAST_RELAPSE:
-      case TreatmentPackage.PERSON__OTHER_VIOLATIONS:
-      case TreatmentPackage.PERSON__LAST_VIOLATION:
-      case TreatmentPackage.PERSON__DAYS_IN_PROGRAM:
-      case TreatmentPackage.PERSON__LAST_INCENTIVE:
-      case TreatmentPackage.PERSON__INCENTIVES:
-      case TreatmentPackage.PERSON__LAST_SANCTION:
-      case TreatmentPackage.PERSON__SANCTIONS:
-        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-        return;
-      case TreatmentPackage.PERSON__EVENTS:
-        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-        return;
-    }
-    super.notifyChanged(notification);
-  }
+		switch (notification.getFeatureID(Person.class)) {
+			case TreatmentPackage.PERSON__ACCOUNT:
+			case TreatmentPackage.PERSON__COMMENTS:
+			case TreatmentPackage.PERSON__START_DATE:
+			case TreatmentPackage.PERSON__CURRENT_PHASE:
+			case TreatmentPackage.PERSON__ENTERED_PHASE:
+			case TreatmentPackage.PERSON__DAYS_IN_PHASE:
+			case TreatmentPackage.PERSON__CURRENT_SOBER_DAYS:
+			case TreatmentPackage.PERSON__TOTAL_SOBER_DAYS:
+			case TreatmentPackage.PERSON__DAYS_IN_CUSTODY:
+			case TreatmentPackage.PERSON__RELAPSES:
+			case TreatmentPackage.PERSON__LAST_RELAPSE:
+			case TreatmentPackage.PERSON__OTHER_VIOLATIONS:
+			case TreatmentPackage.PERSON__LAST_VIOLATION:
+			case TreatmentPackage.PERSON__DAYS_IN_PROGRAM:
+			case TreatmentPackage.PERSON__LAST_INCENTIVE:
+			case TreatmentPackage.PERSON__INCENTIVES:
+			case TreatmentPackage.PERSON__LAST_SANCTION:
+			case TreatmentPackage.PERSON__SANCTIONS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case TreatmentPackage.PERSON__EVENTS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
+		}
+		super.notifyChanged(notification);
+	}
 
 	/**
 	 * Add the current date to all new events.
@@ -677,95 +674,95 @@ public class PersonItemProvider
   @Override
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
-    super.collectNewChildDescriptors(newChildDescriptors, object);
+		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createEnterPhase()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createEnterPhase()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createTreatment()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createTreatment()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createSelfHelp()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createSelfHelp()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createGroupTreatment()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createGroupTreatment()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createIndivdualTreatment()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createIndivdualTreatment()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createIncentive()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createIncentive()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createSanction()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createSanction()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createStatus()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createStatus()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createBreathalyzer()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createBreathalyzer()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createUrinalysis()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createUrinalysis()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createOffense()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createOffense()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createViolation()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createViolation()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createRelapse()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createRelapse()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createInCustody()));
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createInCustody()));
 
-    newChildDescriptors.add
-      (createChildParameter
-        (TreatmentPackage.Literals.PERSON__EVENTS,
-         TreatmentFactory.eINSTANCE.createRelease()));
-  }
+		newChildDescriptors.add
+			(createChildParameter
+				(TreatmentPackage.Literals.PERSON__EVENTS,
+				 TreatmentFactory.eINSTANCE.createRelease()));
+	}
 
   /**
-   * Return the resource locator for this item provider's resources.
-   * <!-- begin-user-doc -->
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public ResourceLocator getResourceLocator()
   {
-    return TreatmentEditPlugin.INSTANCE;
-  }
+		return TreatmentEditPlugin.INSTANCE;
+	}
 
 	/*
 	 * (non-Javadoc)

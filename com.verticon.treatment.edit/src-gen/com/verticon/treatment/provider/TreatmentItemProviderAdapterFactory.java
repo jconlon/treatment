@@ -36,34 +36,34 @@ import com.verticon.treatment.util.TreatmentAdapterFactory;
 public class TreatmentItemProviderAdapterFactory extends TreatmentAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable
 {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static final String copyright = "Copyright Verticon, Inc. 2014 All rights reserved.";
 
   /**
-   * This keeps track of the root adapter factory that delegates to this adapter factory.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the root adapter factory that delegates to this adapter factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected ComposedAdapterFactory parentAdapterFactory;
 
   /**
-   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-   * <!-- begin-user-doc -->
+	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
   /**
-   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-   * <!-- begin-user-doc -->
+	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
   	/**
@@ -83,564 +83,544 @@ public class TreatmentItemProviderAdapterFactory extends TreatmentAdapterFactory
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.Program} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.Program} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected ProgramItemProvider programItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.Program}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.Program}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createProgramAdapter()
   {
-    if (programItemProvider == null)
-    {
-      programItemProvider = new ProgramItemProvider(this);
-    }
+		if (programItemProvider == null) {
+			programItemProvider = new ProgramItemProvider(this);
+		}
 
-    return programItemProvider;
-  }
+		return programItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.Person} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.Person} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected PersonItemProvider personItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.Person}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.Person}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createPersonAdapter()
   {
-    if (personItemProvider == null)
-    {
-      personItemProvider = new PersonItemProvider(this);
-    }
+		if (personItemProvider == null) {
+			personItemProvider = new PersonItemProvider(this);
+		}
 
-    return personItemProvider;
-  }
+		return personItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.Offense} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.Offense} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected OffenseItemProvider offenseItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.Offense}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.Offense}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createOffenseAdapter()
   {
-    if (offenseItemProvider == null)
-    {
-      offenseItemProvider = new OffenseItemProvider(this);
-    }
+		if (offenseItemProvider == null) {
+			offenseItemProvider = new OffenseItemProvider(this);
+		}
 
-    return offenseItemProvider;
-  }
+		return offenseItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.Violation} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.Violation} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected ViolationItemProvider violationItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.Violation}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.Violation}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createViolationAdapter()
   {
-    if (violationItemProvider == null)
-    {
-      violationItemProvider = new ViolationItemProvider(this);
-    }
+		if (violationItemProvider == null) {
+			violationItemProvider = new ViolationItemProvider(this);
+		}
 
-    return violationItemProvider;
-  }
+		return violationItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.Relapse} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.Relapse} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected RelapseItemProvider relapseItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.Relapse}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.Relapse}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createRelapseAdapter()
   {
-    if (relapseItemProvider == null)
-    {
-      relapseItemProvider = new RelapseItemProvider(this);
-    }
+		if (relapseItemProvider == null) {
+			relapseItemProvider = new RelapseItemProvider(this);
+		}
 
-    return relapseItemProvider;
-  }
+		return relapseItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.Incentive} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.Incentive} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected IncentiveItemProvider incentiveItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.Incentive}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.Incentive}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createIncentiveAdapter()
   {
-    if (incentiveItemProvider == null)
-    {
-      incentiveItemProvider = new IncentiveItemProvider(this);
-    }
+		if (incentiveItemProvider == null) {
+			incentiveItemProvider = new IncentiveItemProvider(this);
+		}
 
-    return incentiveItemProvider;
-  }
+		return incentiveItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.Sanction} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.Sanction} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected SanctionItemProvider sanctionItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.Sanction}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.Sanction}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createSanctionAdapter()
   {
-    if (sanctionItemProvider == null)
-    {
-      sanctionItemProvider = new SanctionItemProvider(this);
-    }
+		if (sanctionItemProvider == null) {
+			sanctionItemProvider = new SanctionItemProvider(this);
+		}
 
-    return sanctionItemProvider;
-  }
+		return sanctionItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.Status} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.Status} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected StatusItemProvider statusItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.Status}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.Status}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createStatusAdapter()
   {
-    if (statusItemProvider == null)
-    {
-      statusItemProvider = new StatusItemProvider(this);
-    }
+		if (statusItemProvider == null) {
+			statusItemProvider = new StatusItemProvider(this);
+		}
 
-    return statusItemProvider;
-  }
+		return statusItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.EnterPhase} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.EnterPhase} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected EnterPhaseItemProvider enterPhaseItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.EnterPhase}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.EnterPhase}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createEnterPhaseAdapter()
   {
-    if (enterPhaseItemProvider == null)
-    {
-      enterPhaseItemProvider = new EnterPhaseItemProvider(this);
-    }
+		if (enterPhaseItemProvider == null) {
+			enterPhaseItemProvider = new EnterPhaseItemProvider(this);
+		}
 
-    return enterPhaseItemProvider;
-  }
+		return enterPhaseItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.SelfHelp} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.SelfHelp} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected SelfHelpItemProvider selfHelpItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.SelfHelp}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.SelfHelp}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createSelfHelpAdapter()
   {
-    if (selfHelpItemProvider == null)
-    {
-      selfHelpItemProvider = new SelfHelpItemProvider(this);
-    }
+		if (selfHelpItemProvider == null) {
+			selfHelpItemProvider = new SelfHelpItemProvider(this);
+		}
 
-    return selfHelpItemProvider;
-  }
+		return selfHelpItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.Treatment} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.Treatment} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected TreatmentItemProvider treatmentItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.Treatment}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.Treatment}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createTreatmentAdapter()
   {
-    if (treatmentItemProvider == null)
-    {
-      treatmentItemProvider = new TreatmentItemProvider(this);
-    }
+		if (treatmentItemProvider == null) {
+			treatmentItemProvider = new TreatmentItemProvider(this);
+		}
 
-    return treatmentItemProvider;
-  }
+		return treatmentItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.GroupTreatment} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.GroupTreatment} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected GroupTreatmentItemProvider groupTreatmentItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.GroupTreatment}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.GroupTreatment}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createGroupTreatmentAdapter()
   {
-    if (groupTreatmentItemProvider == null)
-    {
-      groupTreatmentItemProvider = new GroupTreatmentItemProvider(this);
-    }
+		if (groupTreatmentItemProvider == null) {
+			groupTreatmentItemProvider = new GroupTreatmentItemProvider(this);
+		}
 
-    return groupTreatmentItemProvider;
-  }
+		return groupTreatmentItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.InCustody} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.InCustody} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected InCustodyItemProvider inCustodyItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.InCustody}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.InCustody}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createInCustodyAdapter()
   {
-    if (inCustodyItemProvider == null)
-    {
-      inCustodyItemProvider = new InCustodyItemProvider(this);
-    }
+		if (inCustodyItemProvider == null) {
+			inCustodyItemProvider = new InCustodyItemProvider(this);
+		}
 
-    return inCustodyItemProvider;
-  }
+		return inCustodyItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.Release} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.Release} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected ReleaseItemProvider releaseItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.Release}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.Release}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createReleaseAdapter()
   {
-    if (releaseItemProvider == null)
-    {
-      releaseItemProvider = new ReleaseItemProvider(this);
-    }
+		if (releaseItemProvider == null) {
+			releaseItemProvider = new ReleaseItemProvider(this);
+		}
 
-    return releaseItemProvider;
-  }
+		return releaseItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.IndivdualTreatment} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.IndivdualTreatment} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected IndivdualTreatmentItemProvider indivdualTreatmentItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.IndivdualTreatment}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.IndivdualTreatment}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createIndivdualTreatmentAdapter()
   {
-    if (indivdualTreatmentItemProvider == null)
-    {
-      indivdualTreatmentItemProvider = new IndivdualTreatmentItemProvider(this);
-    }
+		if (indivdualTreatmentItemProvider == null) {
+			indivdualTreatmentItemProvider = new IndivdualTreatmentItemProvider(this);
+		}
 
-    return indivdualTreatmentItemProvider;
-  }
+		return indivdualTreatmentItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.Breathalyzer} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.Breathalyzer} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected BreathalyzerItemProvider breathalyzerItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.Breathalyzer}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.Breathalyzer}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createBreathalyzerAdapter()
   {
-    if (breathalyzerItemProvider == null)
-    {
-      breathalyzerItemProvider = new BreathalyzerItemProvider(this);
-    }
+		if (breathalyzerItemProvider == null) {
+			breathalyzerItemProvider = new BreathalyzerItemProvider(this);
+		}
 
-    return breathalyzerItemProvider;
-  }
+		return breathalyzerItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link com.verticon.treatment.Urinalysis} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.verticon.treatment.Urinalysis} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected UrinalysisItemProvider urinalysisItemProvider;
 
   /**
-   * This creates an adapter for a {@link com.verticon.treatment.Urinalysis}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.verticon.treatment.Urinalysis}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createUrinalysisAdapter()
   {
-    if (urinalysisItemProvider == null)
-    {
-      urinalysisItemProvider = new UrinalysisItemProvider(this);
-    }
+		if (urinalysisItemProvider == null) {
+			urinalysisItemProvider = new UrinalysisItemProvider(this);
+		}
 
-    return urinalysisItemProvider;
-  }
+		return urinalysisItemProvider;
+	}
 
   /**
-   * This returns the root adapter factory that contains this factory.
-   * <!-- begin-user-doc -->
+	 * This returns the root adapter factory that contains this factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
 public ComposeableAdapterFactory getRootAdapterFactory()
   {
-    return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-  }
+		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+	}
 
   /**
-   * This sets the composed adapter factory that contains this factory.
-   * <!-- begin-user-doc -->
+	 * This sets the composed adapter factory that contains this factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
 public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
   {
-    this.parentAdapterFactory = parentAdapterFactory;
-  }
+		this.parentAdapterFactory = parentAdapterFactory;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean isFactoryForType(Object type)
   {
-    return supportedTypes.contains(type) || super.isFactoryForType(type);
-  }
+		return supportedTypes.contains(type) || super.isFactoryForType(type);
+	}
 
   /**
-   * This implementation substitutes the factory itself as the key for the adapter.
-   * <!-- begin-user-doc -->
+	 * This implementation substitutes the factory itself as the key for the adapter.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter adapt(Notifier notifier, Object type)
   {
-    return super.adapt(notifier, this);
-  }
+		return super.adapt(notifier, this);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object adapt(Object object, Object type)
   {
-    if (isFactoryForType(type))
-    {
-      Object adapter = super.adapt(object, type);
-      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter)))
-      {
-        return adapter;
-      }
-    }
+		if (isFactoryForType(type)) {
+			Object adapter = super.adapt(object, type);
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+				return adapter;
+			}
+		}
 
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * This adds a listener.
-   * <!-- begin-user-doc -->
+	 * This adds a listener.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
 public void addListener(INotifyChangedListener notifyChangedListener)
   {
-    changeNotifier.addListener(notifyChangedListener);
-  }
+		changeNotifier.addListener(notifyChangedListener);
+	}
 
   /**
-   * This removes a listener.
-   * <!-- begin-user-doc -->
+	 * This removes a listener.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
 public void removeListener(INotifyChangedListener notifyChangedListener)
   {
-    changeNotifier.removeListener(notifyChangedListener);
-  }
+		changeNotifier.removeListener(notifyChangedListener);
+	}
 
   /**
-   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-   * <!-- begin-user-doc -->
+	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
 public void fireNotifyChanged(Notification notification)
   {
-    changeNotifier.fireNotifyChanged(notification);
+		changeNotifier.fireNotifyChanged(notification);
 
-    if (parentAdapterFactory != null)
-    {
-      parentAdapterFactory.fireNotifyChanged(notification);
-    }
-  }
+		if (parentAdapterFactory != null) {
+			parentAdapterFactory.fireNotifyChanged(notification);
+		}
+	}
 
   /**
-   * This disposes all of the item providers created by this factory. 
-   * <!-- begin-user-doc -->
+	 * This disposes all of the item providers created by this factory. 
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
 public void dispose()
   {
-    if (programItemProvider != null) programItemProvider.dispose();
-    if (personItemProvider != null) personItemProvider.dispose();
-    if (enterPhaseItemProvider != null) enterPhaseItemProvider.dispose();
-    if (selfHelpItemProvider != null) selfHelpItemProvider.dispose();
-    if (treatmentItemProvider != null) treatmentItemProvider.dispose();
-    if (groupTreatmentItemProvider != null) groupTreatmentItemProvider.dispose();
-    if (indivdualTreatmentItemProvider != null) indivdualTreatmentItemProvider.dispose();
-    if (incentiveItemProvider != null) incentiveItemProvider.dispose();
-    if (sanctionItemProvider != null) sanctionItemProvider.dispose();
-    if (statusItemProvider != null) statusItemProvider.dispose();
-    if (breathalyzerItemProvider != null) breathalyzerItemProvider.dispose();
-    if (urinalysisItemProvider != null) urinalysisItemProvider.dispose();
-    if (offenseItemProvider != null) offenseItemProvider.dispose();
-    if (violationItemProvider != null) violationItemProvider.dispose();
-    if (relapseItemProvider != null) relapseItemProvider.dispose();
-    if (inCustodyItemProvider != null) inCustodyItemProvider.dispose();
-    if (releaseItemProvider != null) releaseItemProvider.dispose();
-  }
+		if (programItemProvider != null) programItemProvider.dispose();
+		if (personItemProvider != null) personItemProvider.dispose();
+		if (enterPhaseItemProvider != null) enterPhaseItemProvider.dispose();
+		if (selfHelpItemProvider != null) selfHelpItemProvider.dispose();
+		if (treatmentItemProvider != null) treatmentItemProvider.dispose();
+		if (groupTreatmentItemProvider != null) groupTreatmentItemProvider.dispose();
+		if (indivdualTreatmentItemProvider != null) indivdualTreatmentItemProvider.dispose();
+		if (incentiveItemProvider != null) incentiveItemProvider.dispose();
+		if (sanctionItemProvider != null) sanctionItemProvider.dispose();
+		if (statusItemProvider != null) statusItemProvider.dispose();
+		if (breathalyzerItemProvider != null) breathalyzerItemProvider.dispose();
+		if (urinalysisItemProvider != null) urinalysisItemProvider.dispose();
+		if (offenseItemProvider != null) offenseItemProvider.dispose();
+		if (violationItemProvider != null) violationItemProvider.dispose();
+		if (relapseItemProvider != null) relapseItemProvider.dispose();
+		if (inCustodyItemProvider != null) inCustodyItemProvider.dispose();
+		if (releaseItemProvider != null) releaseItemProvider.dispose();
+	}
 
 }

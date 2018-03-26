@@ -47,163 +47,162 @@ public class EventItemProvider
     ITableItemLabelProvider
 {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static final String copyright = "Copyright Verticon, Inc. 2014 All rights reserved.";
 
 	final static DateFormat df = new SimpleDateFormat("MM-dd-yy");
   
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc -->
+	 * This constructs an instance from a factory and a notifier.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public EventItemProvider(AdapterFactory adapterFactory)
   {
-    super(adapterFactory);
-  }
+		super(adapterFactory);
+	}
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc -->
+	 * This returns the property descriptors for the adapted class.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object)
   {
-    if (itemPropertyDescriptors == null)
-    {
-      super.getPropertyDescriptors(object);
+		if (itemPropertyDescriptors == null) {
+			super.getPropertyDescriptors(object);
 
-      addPersonPropertyDescriptor(object);
-      addDatePropertyDescriptor(object);
-      addDescriptionPropertyDescriptor(object);
-      addCommentsPropertyDescriptor(object);
-      addEnteredByPropertyDescriptor(object);
-    }
-    return itemPropertyDescriptors;
-  }
+			addPersonPropertyDescriptor(object);
+			addDatePropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
+			addCommentsPropertyDescriptor(object);
+			addEnteredByPropertyDescriptor(object);
+		}
+		return itemPropertyDescriptors;
+	}
 
   /**
-   * This adds a property descriptor for the Person feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Person feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addPersonPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Event_person_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Event_person_feature", "_UI_Event_type"),
-         TreatmentPackage.Literals.EVENT__PERSON,
-         true,
-         false,
-         true,
-         null,
-         null,
-         null));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Event_person_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Event_person_feature", "_UI_Event_type"),
+				 TreatmentPackage.Literals.EVENT__PERSON,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
 
   /**
-   * This adds a property descriptor for the Date feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Date feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addDatePropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Event_date_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Event_date_feature", "_UI_Event_type"),
-         TreatmentPackage.Literals.EVENT__DATE,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         null,
-         null));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Event_date_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Event_date_feature", "_UI_Event_type"),
+				 TreatmentPackage.Literals.EVENT__DATE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
   /**
-   * This adds a property descriptor for the Description feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addDescriptionPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Event_description_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Event_description_feature", "_UI_Event_type"),
-         TreatmentPackage.Literals.EVENT__DESCRIPTION,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         null,
-         null));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Event_description_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Event_description_feature", "_UI_Event_type"),
+				 TreatmentPackage.Literals.EVENT__DESCRIPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
   /**
-   * This adds a property descriptor for the Comments feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Comments feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addCommentsPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Event_comments_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Event_comments_feature", "_UI_Event_type"),
-         TreatmentPackage.Literals.EVENT__COMMENTS,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         null,
-         null));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Event_comments_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Event_comments_feature", "_UI_Event_type"),
+				 TreatmentPackage.Literals.EVENT__COMMENTS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
   /**
-   * This adds a property descriptor for the Entered By feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Entered By feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addEnteredByPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Event_enteredBy_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Event_enteredBy_feature", "_UI_Event_type"),
-         TreatmentPackage.Literals.EVENT__ENTERED_BY,
-         false,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         null,
-         new String[] {
-          "org.eclipse.ui.views.properties.expert"
-         }));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Event_enteredBy_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Event_enteredBy_feature", "_UI_Event_type"),
+				 TreatmentPackage.Literals.EVENT__ENTERED_BY,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
 
   	/**
 	 * This returns the label text for the adapted class. <!-- begin-user-doc
@@ -223,53 +222,52 @@ public class EventItemProvider
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc -->
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void notifyChanged(Notification notification)
   {
-    updateChildren(notification);
+		updateChildren(notification);
 
-    switch (notification.getFeatureID(Event.class))
-    {
-      case TreatmentPackage.EVENT__DATE:
-      case TreatmentPackage.EVENT__DESCRIPTION:
-      case TreatmentPackage.EVENT__COMMENTS:
-      case TreatmentPackage.EVENT__ENTERED_BY:
-        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-        return;
-    }
-    super.notifyChanged(notification);
-  }
+		switch (notification.getFeatureID(Event.class)) {
+			case TreatmentPackage.EVENT__DATE:
+			case TreatmentPackage.EVENT__DESCRIPTION:
+			case TreatmentPackage.EVENT__COMMENTS:
+			case TreatmentPackage.EVENT__ENTERED_BY:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
+		super.notifyChanged(notification);
+	}
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
-    super.collectNewChildDescriptors(newChildDescriptors, object);
-  }
+		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
 
   /**
-   * Return the resource locator for this item provider's resources.
-   * <!-- begin-user-doc -->
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public ResourceLocator getResourceLocator()
   {
-    return TreatmentEditPlugin.INSTANCE;
-  }
+		return TreatmentEditPlugin.INSTANCE;
+	}
 
   /**
 	 * Adds table support

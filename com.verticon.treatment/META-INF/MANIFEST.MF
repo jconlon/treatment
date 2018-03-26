@@ -11,7 +11,7 @@ Export-Package: com.verticon.treatment,
  com.verticon.treatment.impl,
  com.verticon.treatment.util
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.emf.ecore.xcore.lib
 Bundle-ActivationPolicy: lazy
